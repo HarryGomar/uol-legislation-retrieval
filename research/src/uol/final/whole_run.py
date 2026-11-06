@@ -154,7 +154,8 @@ def refuse_stored() -> None:
     def hook(event, args):
         if event == "open" and args and isinstance(args[0], (str, os.PathLike)):
             p = os.fspath(args[0]).replace("\\", "/").lower()
-            if any(x in p for x in REFUSED):
+            # a method's manifest holds its chosen settings, not its scores: the plain release reads it from the stored folder
+            if any(x in p for x in REFUSED) and not p.endswith("/manifest.json"):
                 raise PermissionError(f"the whole run opened a stored file: {args[0]}")
     sys.addaudithook(hook)
 

@@ -894,9 +894,9 @@
    "from": "src/uol/final/weight_check.py"
   },
   "src/uol/final/whole_run.py": {
-   "sha256": "dd4516e0713bc16435101d1a8c4c047034b732449343420d8a0937704217338c",
+   "sha256": "8bf84cb0e1bdd4e00e90fc29b3005e7a547649050fba362b4d8dcf5f2339dc35",
    "from": "src/uol/final/whole_run.py",
-   "original_sha256": "2e2b13e796be5444204e452ecbd9c3de4307321979df3d01ef9176d02c4497c5",
+   "original_sha256": "464771a1baf762068f46b78e9ac213907eae584556f9fe7a92544155021ce62f",
    "changed": [
     "the author's first name in comments replaced by 'the author'"
    ]
@@ -1465,6 +1465,12 @@
    "changed": [
     "the author's first name in comments replaced by 'the author'"
    ]
+  },
+  "tests/test_whole_test_guard.py": {
+   "sha256": "cf556142f4dcd971272fec9b973f344f7f002e6fd36391ddccdbbe29fa22ef2e",
+   "from": "tests/test_whole_test_guard.py",
+   "original_sha256": "cf556142f4dcd971272fec9b973f344f7f002e6fd36391ddccdbbe29fa22ef2e",
+   "changed": []
   }
  }
 }

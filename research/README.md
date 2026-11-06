@@ -14,6 +14,7 @@ This folder mirrors the thesis's working tree, so the code finds its own root fr
 | `src/uol/thesis_figures/` | the Chapter 5 and 6 figures |
 | `scripts/` | the generators of the thesis's numbers and tables (`final_results.py` writes one record of every result) |
 | `research/programs/` | the read-outs whose numbers the thesis prints |
+| `tests/test_whole_test_guard.py` | the guards of the live path: the test set stays closed, each model step names its model, each live run keeps its own model cache |
 
 ## Running it
 
