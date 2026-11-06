@@ -4,7 +4,8 @@ Code of the thesis *Retrieval of Mexican Federal Legislation with Language Model
 
 Given the facts of a published Mexican court decision (*tesis*), with every name of a law or article masked, the task
 is to rank the 39,178 articles of the 264 federal laws in force on 15 September 2024 so that the articles the court
-cited come first. The benchmark is published separately as the `uol-legislation-retrieval` dataset on Hugging Face (see [Data](#data)).
+cited come first. The benchmark is published separately as the [`uol-legislation-retrieval`](https://huggingface.co/datasets/HarryGmr/uol-legislation-retrieval) dataset on Hugging Face (see
+[Data](#data)).
 
 ## The three setups
 
@@ -44,13 +45,17 @@ pytest
 
 ## Data
 
-| Folder | Content | Where |
-|---|---|---|
-| `data/benchmark/` | cases, labels, splits, catalogue, older *tesis* | the `uol-legislation-retrieval` dataset |
-| `data/vectors/` | Qwen3-Embedding-8B vectors of the article windows, of every case (two instructions) and of the older *tesis* | the `vectors/` folder of the dataset |
-| `models/` | the fitted LightGBM models, `models/<setup>/group<k>.txt` | the thesis's two group-5 models are in the `models/` folder of the dataset; `python -m uol fit` builds all six |
+```bash
+pip install huggingface_hub
+hf download HarryGmr/uol-legislation-retrieval --repo-type dataset --local-dir data/benchmark
+```
 
-Set `UOL_DATA` or pass `--data` to read the benchmark from elsewhere.
+The dataset holds the cases, labels, splits, catalogue and older *tesis*, the Qwen3-Embedding-8B vectors (`vectors/`:
+article windows, every case under two instructions, the older *tesis*) and the thesis's two group-5 LightGBM models
+(`models/`). `python -m uol fit` writes all six models of a setup to `models/<setup>/group<k>.txt`; to answer with
+the thesis's own models instead, pass `--models data/benchmark/models`.
+
+Set `UOL_DATA` or pass `--data` to read the benchmark from elsewhere, and `--vectors` for the vectors.
 
 ## Use
 

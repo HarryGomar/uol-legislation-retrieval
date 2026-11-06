@@ -19,14 +19,14 @@ from uol.history import CitationMemory
 
 def paths(p: argparse.ArgumentParser) -> None:
     p.add_argument("--data", default=None, help="benchmark folder (default $UOL_DATA or data/benchmark)")
-    p.add_argument("--vectors", default="data/vectors", help="Qwen3 vectors folder")
+    p.add_argument("--vectors", default=None, help="Qwen3 vectors folder (default: vectors/ of the benchmark)")
     p.add_argument("--models", default="models", help="fitted models folder")
     p.add_argument("--work", default="work", help="tables and answers")
 
 
 def fit(a: argparse.Namespace) -> None:
     bench = data.load(a.data)
-    vectors = Vectors.load(a.vectors) if a.setup == "ranker" else None
+    vectors = Vectors.load(a.vectors or bench.root / "vectors") if a.setup == "ranker" else None
     table_path = Path(a.work) / f"table_{a.setup}.npz"
     if table_path.exists():
         table = train.Table.load(table_path)
@@ -61,7 +61,7 @@ def answer(a: argparse.Namespace) -> None:
     if a.group < N_FOLDS:
         rows = rows[bench.fold[rows] == a.group]
     rows = rows[: a.cases] if a.cases else rows
-    r = run.Run(bench, a.setup, a.group, a.models, a.vectors, a.encoder, model)
+    r = run.Run(bench, a.setup, a.group, a.models, a.vectors or bench.root / "vectors", a.encoder, model)
     out = r.answer_all(rows, a.out or Path(a.work) / a.setup / f"{a.population}_group{a.group}.jsonl")
     if model is not None:
         print(f"model cost so far in this run: {model.cost()} USD")
