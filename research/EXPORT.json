@@ -1,6 +1,6 @@
 {
  "source": "the thesis working home",
- "copied_utc": "2026-11-06T03:52:49Z",
+ "copied_utc": "2026-11-06T05:14:43Z",
  "rule": "copied unchanged except where 'changed' says how",
  "files": {
   "research/paths.json": {
@@ -95,6 +95,42 @@
    "sha256": "3e451ebe1ed6bea62c6580188c591b7877663acad1cac0e19ccbe17b47e1a256",
    "from": "research/programs/rank_rerun_20261105/reads/s7_macros.py"
   },
+  "research/programs/whole_run_20261105/pack.py": {
+   "sha256": "0b2d57e38cec482c70fe866ec863e27bf09f1ad5444d369ee5338ddb7bbc8aa4",
+   "from": "research/programs/whole_run_20261105/pack.py"
+  },
+  "research/programs/whole_run_20261105/post.py": {
+   "sha256": "148b057280726f34bde7dc0bdd18857d09fda210d9cf167221f3987be649f78a",
+   "from": "research/programs/whole_run_20261105/post.py",
+   "original_sha256": "d69bee112592ccd97f4aa96a2b9ae97f0c5259edc4258752d24a6a8573b1d323",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "research/programs/whole_run_20261105/regen.sh": {
+   "sha256": "9947f7d5b87f7d1cd99ecd0aba500158e365da51ce2707a5679e9884be3fdaaa",
+   "from": "research/programs/whole_run_20261105/regen.sh",
+   "original_sha256": "650cf4d4aef0311ebb7dda3579022ed8a978da1726b0bce6f29972281ee49531",
+   "changed": [
+    "starts from the code's root"
+   ]
+  },
+  "research/programs/whole_run_20261105/regen_after_test.sh": {
+   "sha256": "a6a1cf874c899a456b744a4d568d772c1615544b53a8c91a9c6cbc44c333cf87",
+   "from": "research/programs/whole_run_20261105/regen_after_test.sh",
+   "original_sha256": "1c511a4db518b8f5a509bf2ab25ddea7330f03846de853c4bb64a1b9be23580a",
+   "changed": [
+    "starts from the code's root"
+   ]
+  },
+  "research/programs/whole_run_20261105/remote_job.py": {
+   "sha256": "fd4f97865990dc560f241795ccb214aa9cfa1e1d98dc5320df4247637dc1a247",
+   "from": "research/programs/whole_run_20261105/remote_job.py",
+   "original_sha256": "e0bd7b5b829c5fc66858c1c497aff555b2e1042d575c967d295a5ba6210072f9",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
   "scripts/benchmark_full_counts.py": {
    "sha256": "c7d194dec9b2941b0a47d1496a1b20447b0eca8fd02581ccfba7a1870305c70b",
    "from": "scripts/benchmark_full_counts.py"
@@ -116,9 +152,9 @@
    ]
   },
   "scripts/final_results.py": {
-   "sha256": "509b56d9c88e5bd8c3cb3741c169e1cb868b0d5d04368315773ba43cb85e71fd",
+   "sha256": "53f54656e1ff1657244c5c51672498399ae07c554cea6f35e5470147807493b2",
    "from": "scripts/final_results.py",
-   "original_sha256": "dca816ba9b9ee9bf628542226da4d374001b3ab977741e8395e3f3f7077bd95a",
+   "original_sha256": "dc5a761b51ab4065617e635a1f50eb4ecb42df639f470ffe2dd721aba8350ed7",
    "changed": [
     "the author's first name in comments replaced by 'the author'"
    ]
@@ -866,9 +902,9 @@
    "from": "src/uol/final/test_set.py"
   },
   "src/uol/final/timing.py": {
-   "sha256": "9b0ae70b77e26ce44bafd3f72e0c16bf2189b11260f016f64de42797bb737fb6",
+   "sha256": "3a72abcba4902dc91f7392c4375de7fc0cbeb75b61d57afc3035724e117810d1",
    "from": "src/uol/final/timing.py",
-   "original_sha256": "7cb12a41131c9c097bb4583188062f53bb465a75446a44614ff5e31347cc172f",
+   "original_sha256": "affee23d82c2e4ab2f2ddb95fd5119dc66734cccd3c7959c15f2105e020a70e0",
    "changed": [
     "a folder of the build machine replaced by a repository folder or a neutral name"
    ]
@@ -902,9 +938,9 @@
    ]
   },
   "src/uol/final/whole_test.py": {
-   "sha256": "d9d1c723bcc27d34982cb944787de5aac8e9509ba03cdeb493e27fcdc5118884",
+   "sha256": "0e628b3e041d2e629e6793afedff59d57cdab2bb09635d96d585aba73444ce09",
    "from": "src/uol/final/whole_test.py",
-   "original_sha256": "7ea02d5a3660a5fbbe23687db8a2a597a46b5c2b1cfe3469fcb7eff10424fdcc",
+   "original_sha256": "77aac4af51b242a413d354fbc26a45ac35e3261a3cc389daa2f5ee0ce4a2065b",
    "changed": [
     "the author's first name in comments replaced by 'the author'"
    ]
@@ -1459,18 +1495,16 @@
    ]
   },
   "src/uol/thesis_figures/v21_figs.py": {
-   "sha256": "8b9d166018d769c3151a6fdf5e42fed12e50196f8909839e5ceaa193735677c2",
+   "sha256": "769f9b3ef12be4579101efd3cf08753774688ea32cdff29893e81162e1753f4c",
    "from": "src/uol/thesis_figures/v21_figs.py",
-   "original_sha256": "801d20617e887610cf77971aff087263da24079e29415ddff87589c681435717",
+   "original_sha256": "c1127a696b3b609fafdee051447ff34b267acd48f7e61c68677aec4f5b201090",
    "changed": [
     "the author's first name in comments replaced by 'the author'"
    ]
   },
   "tests/test_whole_test_guard.py": {
    "sha256": "cf556142f4dcd971272fec9b973f344f7f002e6fd36391ddccdbbe29fa22ef2e",
-   "from": "tests/test_whole_test_guard.py",
-   "original_sha256": "cf556142f4dcd971272fec9b973f344f7f002e6fd36391ddccdbbe29fa22ef2e",
-   "changed": []
+   "from": "tests/test_whole_test_guard.py"
   }
  }
 }

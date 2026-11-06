@@ -696,7 +696,7 @@ def f_frontier() -> Path:
             ax.plot([cents(x) for x in d["usd_per_1000"]], d["ndcg_at_10"], "o", ls="none", ms=ms, zorder=z, **st)
             keys.append(Line2D([0], [0], marker="o", ls="none", ms=ms, label=text, **st))
     ax.step([p[0] for p in front], [p[1] for p in front], where="post", color=MUTED, lw=0.7, zorder=1)
-    spots = {"tuned lexical matching": (0, -6, "center", "top"), "the ranker without the encoder": (-5, 0, "right", "center"),
+    spots = {"tuned lexical matching": (0, -6, "center", "top"), "the ranker without the encoder": (0, -6, "center", "top"),
              "the ranker": (-6, 0, "right", "center"),
              "the model alone": (-6, 0, "right", "center"), "the system": (-6, 6, "right", "bottom")}
     lead = {}

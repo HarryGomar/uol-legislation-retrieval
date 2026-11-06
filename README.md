@@ -8,14 +8,15 @@ cited come first. The benchmark is published separately (`uol-benchmark`, see [D
 
 ## The three setups
 
-| Setup | What it does | nDCG@10 (development) |
-|---|---|---:|
-| `noenc` | a learned ranker over five lexical and citation sources, no encoder, no language model | 0.432 |
-| `ranker` | the same ranker with three sources built on Qwen3-Embedding-8B vectors | 0.489 |
-| `system` | the ranker's list merged with GPT-6.1 Sol's list of 20, then the first 30 reordered by GPT-6.1 Sol | 0.661 |
+| Setup | What it does | nDCG@10, development | nDCG@10, test |
+|---|---|---:|---:|
+| `noenc` | a learned ranker over five lexical and citation sources, no encoder, no language model | 0.432 | 0.468 |
+| `ranker` | the same ranker with three sources built on Qwen3-Embedding-8B vectors | 0.489 | 0.527 |
+| `system` | the ranker's list merged with GPT-6.1 Sol's list of 20, then the first 30 reordered by GPT-6.1 Sol | **0.661** | **0.684** |
 
-Scores are on the 1,217 development evaluation cases, five outer folds, averaged within each group of related cases
-and then across groups.
+Development scores are out of fold on the 1,217 development evaluation cases; test scores are from one run of the
+final system on the 398 test evaluation cases, with the models trained on every development case. Both are averaged
+within each group of related cases and then across groups. GPT-6.1 Sol's list of 20 on its own scores 0.628 and 0.660.
 
 **How a case is answered.** The first stage scores every article with each source: BM25 over Spanish stems fused with
 character n-grams, BM25 over articles expanded with the facts of training cases that cite them, the articles cited by
@@ -74,15 +75,16 @@ broken by float rounding), development nDCG@10 0.432, and a group-5 model that s
 The three Qwen sources differ from the stored scores by about one part in a million, because a matrix product over
 many cases rounds differently from one over a single case. These differences change the trees: the refitted ranker
 with the encoder scores 0.484 on development against 0.489 for the thesis's (difference −0.005, 95% interval −0.011
-to +0.001). The dataset holds the thesis's own group-5 models, and with a stored model `answer` gives the stored lists
-(fold 0: the same first ten articles on all 228 cases).
+to +0.001). Fitted on the stored source scores instead, the research code reproduces both rankers on all 1,217 cases
+(`rk_repro_ranker`, `rk_repro_noenc` in `experiments/`). The dataset holds the thesis's own group-5 models, and with a
+stored model `answer` gives the stored lists (fold 0: the same first ten articles on all 228 cases).
 
 Fresh encoding differs slightly from the stored vectors (median cosine 0.992 on a card in 8 bits, 0.997 on the
 processor), and a language model does not answer twice the same way, so `answer` with a fresh encoder or fresh model
 calls is close to, not identical with, the stored lists.
 
 Every experiment of the thesis is listed in [`experiments/`](experiments/README.md), with the stored per-case scores
-of all 414 systems and the command that reruns it. The research code as it ran is in [`research/`](research/README.md).
+of all 416 systems and the command that reruns it. The research code as it ran is in [`research/`](research/README.md).
 
 ## Layout
 

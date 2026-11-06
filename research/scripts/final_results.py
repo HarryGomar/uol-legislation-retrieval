@@ -1031,11 +1031,11 @@ def macros(rec: dict) -> None:
     api = read(RUN / "receipts" / "api_ask_gpt61sol.json") or {}
     put("apiUsd", api.get("usd") and api.get("rows") and 1000 * api["usd"] / api["rows"], lambda v: f"{v:.1f}",
         "receipts/api_ask_gpt61sol.json usd / rows x 1000 (USD per 1,000 cases, both orders, billed)")
-    lv = read(ROOT / ".cache/whole_run/runs/system_stored_proto/result.json") or {}
-    put("wrSysCases", lv.get("cases"), num, ".cache/whole_run/runs/system_stored_proto/result.json: cases (the whole system run live from the facts)")
-    put("wrSysMed", (lv.get("seconds") or {}).get("median"), lambda v: f"{v:.0f}", "whole_run system_stored_proto: seconds.median")
-    put("wrSysWait", (lv.get("model_wait") or {}).get("median"), lambda v: f"{v:.0f}", "whole_run system_stored_proto: model_wait.median")
-    put("wrSysCents", lv.get("usd_per_case"), lambda v: f"{100 * v:.1f}", "whole_run system_stored_proto: usd_per_case x 100 (one case per call, standard tier)")
+    lv = read(ROOT / ".cache/whole_run/runs/system_stored_sol/result.json") or {}
+    put("wrSysCases", lv.get("cases"), num, ".cache/whole_run/runs/system_stored_sol/result.json: cases (the whole system run live from the facts)")
+    put("wrSysMed", (lv.get("seconds") or {}).get("median"), lambda v: f"{v:.0f}", "whole_run system_stored_sol: seconds.median")
+    put("wrSysWait", (lv.get("model_wait") or {}).get("median"), lambda v: f"{v:.0f}", "whole_run system_stored_sol: model_wait.median")
+    put("wrSysCents", lv.get("usd_per_case"), lambda v: f"{100 * v:.1f}", "whole_run system_stored_sol: usd_per_case x 100 (one case per call, standard tier)")
     nl_ = read(ROOT / ".cache/whole_run/runs/noenc_none_a/result.json") or {}
     put("wrNoencCases", nl_.get("cases"), num, ".cache/whole_run/runs/noenc_none_a/result.json: cases (the ranker without the encoder run live)")
     rt = c.get("ranker_time") or {}
@@ -1047,6 +1047,12 @@ def macros(rec: dict) -> None:
     put("kRankVram", rt.get("vram_gb"), lambda v: f"{v:.1f}", f"{R}: system.cost.ranker_time.vram_gb")
     lrr = (read(ROOT / ".cache/whole_run/runs/ranker_card_a/result.json") or {}).get("machine") or {}
     put("kRankRamLive", lrr.get("peak_rss_gb"), lambda v: f"{v:.1f}", "whole_run ranker_card_a: machine.peak_rss_gb (the ranker's process on the i9-14900KF; the encoder runs in its own process)")
+    rp = read(ROOT / "research/programs/rank_rerun_20261105/out/repro_check.json") or {}    # the two rankers fitted again from the code (rank_rerun rk_repro_*), per case
+    rr, rn = rp.get("rk_repro_ranker") or {}, rp.get("rk_repro_noenc") or {}
+    put("rpCases", rr.get("cases_common"), num, "research/programs/rank_rerun_20261105/out/repro_check.json: rk_repro_ranker.cases_common")
+    put("rpRankerSame", rr.get("same_at_4_decimals"), num, "research/programs/rank_rerun_20261105/out/repro_check.json: rk_repro_ranker.same_at_4_decimals (against rt_lm_tesis)")
+    put("rpNoencSame", rn.get("same_at_4_decimals"), num, "research/programs/rank_rerun_20261105/out/repro_check.json: rk_repro_noenc.same_at_4_decimals (against rk_noenc)")
+    put("rpMaxDiff", max(rr.get("max_abs_difference", 1), rn.get("max_abs_difference", 1)) if rr and rn else None, lambda v: f"{v:.4f}", "research/programs/rank_rerun_20261105/out/repro_check.json: largest |new - stored| nDCG@10 over both rankers")
     usd_rank = (c.get("ranker") or {}).get("usd_per_1000_median")
     put("lnUsd", usd_rank, lambda v: f"{v:.3f}", f"{R}: system.cost.ranker.usd_per_1000_median")
     put("ctUsdSzero", (c.get("ranker_noenc") or {}).get("usd_per_1000_median"), lambda v: f"{v:.3f}", f"{R}: system.cost.ranker_noenc.usd_per_1000_median")

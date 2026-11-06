@@ -5,7 +5,7 @@ can be rerun: the final setups with the `uol` package, the others with the resea
 
 | File | What it holds |
 |---|---|
-| `results/dev_per_case.parquet` | nDCG@10, MRR, recall@20/100 and success@1/10 of each of the 414 stored systems on each of the 1,217 development evaluation cases (`record`, `system`, `query_id`, `component_id`, measures) |
+| `results/dev_per_case.parquet` | nDCG@10, MRR, recall@20/100 and success@1/10 of each of the 416 stored systems on each of the 1,217 development evaluation cases (`record`, `system`, `query_id`, `component_id`, measures) |
 | `results/dev_lists/*.parquet` | the ranked lists (first 200) of the seven main systems |
 | `results/MAIN.json` | which stored system each main row is |
 | `summary.py` | means over groups and paired comparisons with a 95% bootstrap interval |
@@ -102,8 +102,11 @@ Systems are named as in `summary.py` (`record/id`). Commands are run from `resea
 
 ### 6.8 The test set
 
-`python -m uol answer --setup {noenc,ranker,system} --population TEST --group 5` answers the test cases with the
-models trained on every development fold; `python -m uol score` scores the answers when the test labels are present.
+The final system was run once on the 398 test evaluation cases: nDCG@10 0.684 for the system, 0.660 for GPT-6.1 Sol's
+list alone, 0.527 for the ranker and 0.468 for the ranker without the encoder. `python -m uol answer --setup
+{noenc,ranker,system} --population TEST --group 5` answers the test cases with the models trained on every development
+fold; `python -m uol score` scores the answers when the test labels are present. The research code's run is
+`research/src/uol/final/whole_test.py`.
 
 ### 6.9 The three setups
 
@@ -121,3 +124,4 @@ models trained on every development fold; `python -m uol score` scores the answe
 | How complete are the labels? | `scripts/label_completeness.py` |
 | Does training on cases whose facts name a provision matter? (`footing/rk_train_no_masked`, `footing/rk_train_unnamed`) | `python -m uol.final.rank_rerun ranker --id <id> --go` |
 | Seed and repetition variation (`footing/rk_seed1`, `footing/rk_seed2`) | `python -m uol.final.rank_rerun ranker --id <id> --go` |
+| Does the code reproduce both rankers? (`footing/rk_repro_ranker`, `footing/rk_repro_noenc`: all 1,217 cases identical) | `python -m uol.final.rank_rerun ranker --id <id> --go` |

@@ -424,7 +424,7 @@ class M1Case:
         idx, sim = self.cached[int(row)] if cached else self.neighbours(q, row)
         v, c = self.votes(idx, sim, row)
         info = {}
-        if not cached:
+        if not cached and int(row) in self.cached:      # the check against the stored neighbours, for the cases that have them
             ci, cs = self.cached[int(row)]
             k = int(self.cfg["k"])
             info = {"same_top_k": bool(np.array_equal(np.asarray(idx[:k]), np.asarray(ci[:k]))),

@@ -249,7 +249,7 @@ def score() -> int:
     context.apply_label_corrections()
     context.install_labelled_evaluate()
     d = TF.ep_release()
-    C.lockbox_read("whole_score", f"FRAMING decision 1: one score of the system, the ranker and the ranker without the encoder; {release.get('word')}", Path(__file__))
+    C.lockbox_read("final_score", f"FRAMING decision 1: one score of the system, the ranker and the ranker without the encoder; {release.get('word')}", Path(__file__))
     generic = {int(i) for i in d.generic_idx}
     rf = TS.rows_file()
     test = rf["rows"]
