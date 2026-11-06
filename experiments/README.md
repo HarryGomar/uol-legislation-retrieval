@@ -103,7 +103,8 @@ Systems are named as in `summary.py` (`record/id`). Commands are run from `resea
 ### 6.8 The test set
 
 The final system was run once on the 398 test evaluation cases: nDCG@10 0.684 for the system, 0.660 for GPT-6.1 Sol's
-list alone, 0.527 for the ranker and 0.468 for the ranker without the encoder. `python -m uol answer --setup
+list alone, 0.527 for the ranker and 0.468 for the ranker without the encoder (0.683, 0.658, 0.522 and 0.463 on the
+352 test cases of the dataset, without the 46 published after its snapshot). `python -m uol answer --setup
 {noenc,ranker,system} --population TEST --group 5` answers the test cases with the models trained on every development
 fold; `python -m uol score` scores the answers when the test labels are present. The research code's run is
 `research/src/uol/final/whole_test.py`.

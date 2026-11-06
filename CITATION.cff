@@ -8,6 +8,7 @@ authors:
     affiliation: "Instituto Tecnológico Autónomo de México (ITAM)"
 version: "1.0.0"
 license: MIT
+repository-code: "https://github.com/HarryGomar/uol-legislation-retrieval"
 preferred-citation:
   type: thesis
   title: "Retrieval of Mexican Federal Legislation with Language Models and Learning to Rank"

@@ -4,7 +4,7 @@ Code of the thesis *Retrieval of Mexican Federal Legislation with Language Model
 
 Given the facts of a published Mexican court decision (*tesis*), with every name of a law or article masked, the task
 is to rank the 39,178 articles of the 264 federal laws in force on 15 September 2024 so that the articles the court
-cited come first. The benchmark is published separately (`uol-benchmark`, see [Data](#data)).
+cited come first. The benchmark is published separately as the `uol-legislation-retrieval` dataset on Hugging Face (see [Data](#data)).
 
 ## The three setups
 
@@ -17,6 +17,8 @@ cited come first. The benchmark is published separately (`uol-benchmark`, see [D
 Development scores are out of fold on the 1,217 development evaluation cases; test scores are from one run of the
 final system on the 398 test evaluation cases, with the models trained on every development case. Both are averaged
 within each group of related cases and then across groups. GPT-6.1 Sol's list of 20 on its own scores 0.628 and 0.660.
+The thesis's test set adds 46 cases published after the dataset's snapshot to its 352 test evaluation cases; on those
+352 alone the three setups score 0.463, 0.522 and 0.683.
 
 **How a case is answered.** The first stage scores every article with each source: BM25 over Spanish stems fused with
 character n-grams, BM25 over articles expanded with the facts of training cases that cite them, the articles cited by
@@ -44,7 +46,7 @@ pytest
 
 | Folder | Content | Where |
 |---|---|---|
-| `data/benchmark/` | cases, labels, splits, catalogue, older *tesis* | the `uol-benchmark` dataset |
+| `data/benchmark/` | cases, labels, splits, catalogue, older *tesis* | the `uol-legislation-retrieval` dataset |
 | `data/vectors/` | Qwen3-Embedding-8B vectors of the article windows, of every case (two instructions) and of the older *tesis* | the `vectors/` folder of the dataset |
 | `models/` | the fitted LightGBM models, `models/<setup>/group<k>.txt` | the thesis's two group-5 models are in the `models/` folder of the dataset; `python -m uol fit` builds all six |
 
