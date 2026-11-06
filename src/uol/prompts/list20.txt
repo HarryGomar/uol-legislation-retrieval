@@ -1,0 +1,6 @@
+Tarea: para cada caso recibirás unos hechos redactados por un tribunal federal mexicano (con algunas referencias normativas ocultas). Sin ver ningún otro material, indica qué artículos de leyes federales mexicanas o de la Constitución Política de los Estados Unidos Mexicanos citó el tribunal al resolver el caso. Da exactamente 20 artículos distintos, ordenados del más al menos probable. Para cada uno indica el nombre completo de la ley y el número de artículo tal como aparece en la ley (por ejemplo "14", "1o." o "153-F Bis"). Si no estás seguro, completa la lista con tus mejores estimaciones.
+
+No uses herramientas. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id.
+
+Casos:
+{items}

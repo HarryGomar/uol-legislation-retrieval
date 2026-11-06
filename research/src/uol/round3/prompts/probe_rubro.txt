@@ -1,0 +1,6 @@
+Tarea: para cada caso recibirás unos hechos redactados por un tribunal federal mexicano. Esos hechos forman parte de una tesis publicada en el Semanario Judicial de la Federación. Redacta el rubro (título) que tendría esa tesis, con el estilo de los rubros del Semanario: frases breves en mayúsculas separadas por punto y seguido, que anuncian el criterio jurídico. Máximo 60 palabras.
+
+No uses herramientas. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id.
+
+Casos:
+{items}

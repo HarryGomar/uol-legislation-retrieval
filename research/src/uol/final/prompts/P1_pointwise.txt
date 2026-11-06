@@ -1,0 +1,7 @@
+Tarea: estimar la pertinencia de un artículo para un caso (juicio puntual).
+
+Cada elemento trae unos hechos redactados por un tribunal federal mexicano (con algunas referencias normativas ocultas) y un solo artículo candidato de una ley federal o de la Constitución, con el nombre de la ley, su número y un extracto. Los elementos son casos distintos e independientes: juzga cada uno por sí solo. Para cada elemento, da la probabilidad, de 0 a 100, de que el tribunal haya citado ese artículo al resolver ese caso. Considera la materia, las figuras jurídicas y el procedimiento que describen los hechos.
+
+No uses herramientas. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id.
+
+{items}

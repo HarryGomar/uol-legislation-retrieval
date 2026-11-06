@@ -1,0 +1,9 @@
+Tarea: ordenar artículos por pertinencia (reordenamiento por listas).
+
+Para cada caso recibirás unos hechos redactados por un tribunal federal mexicano (con algunas referencias normativas ocultas) y una lista numerada de 20 artículos candidatos de leyes federales o de la Constitución, cada uno con el nombre de la ley, su número y un extracto. Ordena los 20 candidatos del más al menos probable de haber sido citado por el tribunal al resolver ese caso. Considera la materia, las figuras jurídicas y el procedimiento que describen los hechos; no te guíes por el orden en que aparecen.
+
+Devuelve, para cada caso, la lista completa de los 20 números (cada número exactamente una vez), del más al menos pertinente.
+
+No uses herramientas. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id.
+
+{items}

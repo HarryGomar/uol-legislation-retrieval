@@ -1,0 +1,13 @@
+Tarea: descomposición en cuestiones jurídicas (variante B: se permiten nombres de leyes).
+
+Para cada caso recibirás unos hechos redactados por un tribunal mexicano (con algunas referencias normativas ocultas). Enumera de 2 a 5 cuestiones jurídicas que el tribunal tendría que resolver para decidir el caso. Cada cuestión debe:
+- redactarse en registro técnico-jurídico, como una pregunta o un enunciado breve (máximo 30 palabras);
+- nombrar figuras, instituciones, derechos, requisitos o actos procesales, no hechos anecdóticos;
+- puede mencionar el nombre de la ley, código o reglamento aplicable, o la Constitución, si lo considera pertinente;
+- NO incluir números de artículo, fracción o párrafo;
+- NO anticipar la respuesta ni la conclusión del tribunal.
+
+No uses herramientas. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id.
+
+Casos:
+{items}

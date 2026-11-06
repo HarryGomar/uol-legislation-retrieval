@@ -1,0 +1,1470 @@
+{
+ "source": "the thesis working home",
+ "copied_utc": "2026-11-06T03:52:49Z",
+ "rule": "copied unchanged except where 'changed' says how",
+ "files": {
+  "research/paths.json": {
+   "sha256": "4f03153dfb6cbf2f2a5c51a732ccdac67f669ece8d373f3354c387f7a2e02561",
+   "from": "research/paths.json"
+  },
+  "research/programs/lean_rerun_20261104/repeat_passes.py": {
+   "sha256": "bef7fe31038406f5b751912825144509745d81d3eecbba7c86fdb91432af1b22",
+   "from": "research/programs/lean_rerun_20261104/repeat_passes.py"
+  },
+  "research/programs/overnight_20261105/additions_family.py": {
+   "sha256": "9724b3e36afe7e0b4319686b0dc6bbc2035b4456e7fb7c71a35e0a788be67fdf",
+   "from": "research/programs/overnight_20261105/additions_family.py"
+  },
+  "research/programs/overnight_20261105/e4_misses.py": {
+   "sha256": "bd23c9876642a1dc54b6f2924a8766f8d361de28c3d689023720052188567e97",
+   "from": "research/programs/overnight_20261105/e4_misses.py"
+  },
+  "research/programs/overnight_20261105/e7b_read.py": {
+   "sha256": "06acf87f299d46497b20692dc0578be466e8755d17501520cb455e70bcd85b72",
+   "from": "research/programs/overnight_20261105/e7b_read.py"
+  },
+  "research/programs/overnight_20261105/e7b_trained.py": {
+   "sha256": "ac0ff37f97fc03cddea401c321cf06309bc8013271817e12cae77be89fd720a6",
+   "from": "research/programs/overnight_20261105/e7b_trained.py"
+  },
+  "research/programs/overnight_20261105/system_parts.py": {
+   "sha256": "a1f195f786cb0f8ca8e0537898121622532467744c46e947739f53d883575ed7",
+   "from": "research/programs/overnight_20261105/system_parts.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/common.py": {
+   "sha256": "9318417dd801f890c0e15162d4c9d3741515563d6817c0179e2df813ca30e2e3",
+   "from": "research/programs/rank_rerun_20261105/reads/common.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/e7a_what_differs.py": {
+   "sha256": "c5458a0c960f64c406a6aed7c593c267131cb4a02c55932e260ce1e1e4238951",
+   "from": "research/programs/rank_rerun_20261105/reads/e7a_what_differs.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/e8_encoder_in_system.py": {
+   "sha256": "53efd51e12ebae2b282c303852b68e395b776756aab22dd2067ea65c4615ac54",
+   "from": "research/programs/rank_rerun_20261105/reads/e8_encoder_in_system.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/framing_numbers.py": {
+   "sha256": "f58ae41dc3cda4351d07d2989f8352518c316b00820572779a87d38161d0022e",
+   "from": "research/programs/rank_rerun_20261105/reads/framing_numbers.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h073_lsa.py": {
+   "sha256": "19f7a91ccf5afc2d7f2e9dfe1f280e35da614818e8ee5618602aff337f5e9044",
+   "from": "research/programs/rank_rerun_20261105/reads/h073_lsa.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h075_bands.py": {
+   "sha256": "d3e81a949a12305df8fbf7926ea4d35486ebcb73c2c48379ab18e7d8d15c8408",
+   "from": "research/programs/rank_rerun_20261105/reads/h075_bands.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h077_cells.py": {
+   "sha256": "95b622694acea9fee1243ddfc29172496c2d9609912b7b3381e5b7505df19e0c",
+   "from": "research/programs/rank_rerun_20261105/reads/h077_cells.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h079_encoders.py": {
+   "sha256": "0ee447c76922aa6f49b99a6d6521abda7d355611e532a1c619abce6e239de875",
+   "from": "research/programs/rank_rerun_20261105/reads/h079_encoders.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h080_late_sparse.py": {
+   "sha256": "120740d3cb801c62954e903fe85a2436cba48c7c6698a5dbb9d97be353994ec7",
+   "from": "research/programs/rank_rerun_20261105/reads/h080_late_sparse.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h081_rewriting.py": {
+   "sha256": "11a10a869cdb94bba2698ae999d1f007243f6c10c8ff9f4cde9ad4349f4a11eb",
+   "from": "research/programs/rank_rerun_20261105/reads/h081_rewriting.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h085_cross.py": {
+   "sha256": "3124b6bef28fb170c437e5b3cf4a20ecf32aa46400b5fe2123cb11a4ec567d80",
+   "from": "research/programs/rank_rerun_20261105/reads/h085_cross.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h088_inventory.py": {
+   "sha256": "638b4f1c9fe0df08d15bed141be534bcbe312eb7b7ec602c9a1c21fceccff033",
+   "from": "research/programs/rank_rerun_20261105/reads/h088_inventory.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/h099_lead.py": {
+   "sha256": "4074426f41cdc8eaeeb3bd94cce6491f9d2596a509e836cad8fa8c9f1fbb32b1",
+   "from": "research/programs/rank_rerun_20261105/reads/h099_lead.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/named_cited_dev.py": {
+   "sha256": "ba8379c2a460c702f056277aabc43f46a3b7ca17f80c0a1c13d13d38e5dfb856",
+   "from": "research/programs/rank_rerun_20261105/reads/named_cited_dev.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/s6_macros.py": {
+   "sha256": "3b07a9943e5919a949eccd099cd1b9c6391aaf388fcb16a98976428557899ffe",
+   "from": "research/programs/rank_rerun_20261105/reads/s6_macros.py"
+  },
+  "research/programs/rank_rerun_20261105/reads/s7_macros.py": {
+   "sha256": "3e451ebe1ed6bea62c6580188c591b7877663acad1cac0e19ccbe17b47e1a256",
+   "from": "research/programs/rank_rerun_20261105/reads/s7_macros.py"
+  },
+  "scripts/benchmark_full_counts.py": {
+   "sha256": "c7d194dec9b2941b0a47d1496a1b20447b0eca8fd02581ccfba7a1870305c70b",
+   "from": "scripts/benchmark_full_counts.py"
+  },
+  "scripts/bsard_macros.py": {
+   "sha256": "f85eb1d81b4bd6538efc1933ff7bb0ef71c34b3865ce363e6f7ac8a506cf1611",
+   "from": "scripts/bsard_macros.py"
+  },
+  "scripts/c10_api.py": {
+   "sha256": "a78016b2360039b13b98dabfc0bc8589143716f99862bbcbaf1abc48dbe6b75b",
+   "from": "scripts/c10_api.py"
+  },
+  "scripts/evidence_macros.py": {
+   "sha256": "6703e928ed650359263fe4761ec8d4e60449b0797eefcca1838cde7979146781",
+   "from": "scripts/evidence_macros.py",
+   "original_sha256": "af83269ea91bd08ffc8e58f718eac72c98288f119ad43766285f321b95046135",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "scripts/final_results.py": {
+   "sha256": "509b56d9c88e5bd8c3cb3741c169e1cb868b0d5d04368315773ba43cb85e71fd",
+   "from": "scripts/final_results.py",
+   "original_sha256": "dca816ba9b9ee9bf628542226da4d374001b3ab977741e8395e3f3f7077bd95a",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "scripts/gate_dev.py": {
+   "sha256": "368f52159a712335d22bcd081d266fe21e69b45471fe53e57ecc13276c59a2cc",
+   "from": "scripts/gate_dev.py"
+  },
+  "scripts/label_completeness.py": {
+   "sha256": "eaeba681af9d2185bc18e1d091ea5c53859e57dde2e402ca407098b76f8b7a5b",
+   "from": "scripts/label_completeness.py"
+  },
+  "scripts/openai_api.py": {
+   "sha256": "4b937110d93dd16935a24b08419137377461fa937b07645bc3aaa6053c77cf09",
+   "from": "scripts/openai_api.py"
+  },
+  "scripts/support_share.py": {
+   "sha256": "1cde1e590f5bdbe47f6e733f87b2f2dc43867fb0864de2abaa0cc712dde972c3",
+   "from": "scripts/support_share.py"
+  },
+  "scripts/t5_output.py": {
+   "sha256": "4e122936cf5760f8bd4d093f56729d05333cdcd32d0c77905adae5211b752102",
+   "from": "scripts/t5_output.py"
+  },
+  "scripts/t5_sources.py": {
+   "sha256": "2d33372db73297bb3bfa3affc1ad72e873760218db7126586312f2362b98c4c5",
+   "from": "scripts/t5_sources.py"
+  },
+  "scripts/t6_failure.py": {
+   "sha256": "df99ed087cefdf33fa345d7bde14faadf0a1f5114707e723e4194fc1edf3d046",
+   "from": "scripts/t6_failure.py"
+  },
+  "scripts/t6_tables.py": {
+   "sha256": "a2011f24b8e9b71395e6585a4ddb8a677307712e56236d500e8cc572c67832b7",
+   "from": "scripts/t6_tables.py"
+  },
+  "src/uol/__init__.py": {
+   "sha256": "3b8b6f2c43760d0ac67122cf6bb2770d43bb26debbb134ba6225e75954f68eec",
+   "from": "src/uol/__init__.py"
+  },
+  "src/uol/analysis_c/__init__.py": {
+   "sha256": "ce41d32498ec73e46dc8227652cc6947dc592e79ef3959fab2fe8358fec08c0b",
+   "from": "src/uol/analysis_c/__init__.py"
+  },
+  "src/uol/analysis_c/__main__.py": {
+   "sha256": "2f19109a4de74e4dab99a1172dff02ceb321045fd1798c03c7b22bb77db82e71",
+   "from": "src/uol/analysis_c/__main__.py"
+  },
+  "src/uol/analysis_c/c1_law.py": {
+   "sha256": "2d71af522e5549ed182ab52da461b211c270cdc81bf1128907062b637467f933",
+   "from": "src/uol/analysis_c/c1_law.py"
+  },
+  "src/uol/analysis_c/c3_gain.py": {
+   "sha256": "7f7a2e040bd1c204532516f1dca29a65565cc4e5143785a2b49cd31fa8f74641",
+   "from": "src/uol/analysis_c/c3_gain.py",
+   "original_sha256": "87d2d6f542f913c3d85731eab089ec2ede40a3c574638f98c59fe696878c5234",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/analysis_c/c4_near.py": {
+   "sha256": "ef2bcd9da8a69731786e02eeaff656bf71f9c4c5b3ffa27995d84259b6a8fae4",
+   "from": "src/uol/analysis_c/c4_near.py"
+  },
+  "src/uol/analysis_c/c6_lay.py": {
+   "sha256": "1292eda9245f42a46fb9d948822f64eba6e15d4c8935a9f01345a5cc4ebeaefd",
+   "from": "src/uol/analysis_c/c6_lay.py"
+  },
+  "src/uol/analysis_c/c7_conf.py": {
+   "sha256": "35704515cdb6876e8675bcf6b7e784bde554e0680489346505d5f041714128bd",
+   "from": "src/uol/analysis_c/c7_conf.py"
+  },
+  "src/uol/analysis_c/c8_frontier.py": {
+   "sha256": "0a59944b8069e2bd4ed466a33e1df15368f35828593a8baa1bbffa262ecf9079",
+   "from": "src/uol/analysis_c/c8_frontier.py",
+   "original_sha256": "1a9332f3434bf685accbf4ff391200fa456d5ee3ddbee8bb297f59d1b23c55ca",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/analysis_c/c9_length.py": {
+   "sha256": "4664d31a68dda545b4736759984e8573d83d686b13cb4156a9a0c23eea7b3beb",
+   "from": "src/uol/analysis_c/c9_length.py"
+  },
+  "src/uol/analysis_c/common.py": {
+   "sha256": "ce21a8ac8b89105bf191fb369853cc243cdca972a41279ec7826e2f7aac2ea88",
+   "from": "src/uol/analysis_c/common.py",
+   "original_sha256": "5921d87f72d705739745c49f8308234a0a43045042f9b6180253011ab9a99739",
+   "changed": [
+    "the bundle data folder can be set by UOL_ANALYSIS_DATA"
+   ]
+  },
+  "src/uol/analysis_c/d102.py": {
+   "sha256": "dc04031a542d1e069da5ad1ba3dbe8a17a9c4acc50fa7c952e32dd50d5bdb3b4",
+   "from": "src/uol/analysis_c/d102.py"
+  },
+  "src/uol/analysis_c/f4_provenance.py": {
+   "sha256": "58f8aaa1da5a42b1e1c0aad68d2e2fe72b372e617d4d43c87408b0737393a778",
+   "from": "src/uol/analysis_c/f4_provenance.py"
+  },
+  "src/uol/analysis_c/noise.py": {
+   "sha256": "1a497edd05ca97444db3195e2112b0fed8874a7c5fb9c6c963e8b74f9ba90d20",
+   "from": "src/uol/analysis_c/noise.py"
+  },
+  "src/uol/analysis_c/recall_sweep.py": {
+   "sha256": "ddd11965f2dac88c10a6693021b14666f6d1b525380b4fc4c0e8d34ba7d6f161",
+   "from": "src/uol/analysis_c/recall_sweep.py"
+  },
+  "src/uol/datasets/__init__.py": {
+   "sha256": "dd72357509c8b6cc4192df1cf6e0cdfa8ce669d765799af16c0ebb4d2bf16aef",
+   "from": "src/uol/datasets/__init__.py"
+  },
+  "src/uol/datasets/canonical.py": {
+   "sha256": "965ce2b938bf2b1c583c5ed33d9206413fea60530a520737516815dabc11bf55",
+   "from": "src/uol/datasets/canonical.py"
+  },
+  "src/uol/datasets/sjf_bicentenario_portable.py": {
+   "sha256": "37b97929418e4397ab5028e2a5dd8364fcbd3cf88aeac5ebc6c26ac650d94762",
+   "from": "src/uol/datasets/sjf_bicentenario_portable.py"
+  },
+  "src/uol/embedding_push/__init__.py": {
+   "sha256": "59f02a8d5954aae9275a7727cd468b7648882bd16b06277cf62dfbf1a4b6f7fd",
+   "from": "src/uol/embedding_push/__init__.py"
+  },
+  "src/uol/embedding_push/base.py": {
+   "sha256": "5229b73b97a77f83a1ff1b549d36867ba3e4eafae49a5752fdeee6251e535cdc",
+   "from": "src/uol/embedding_push/base.py"
+  },
+  "src/uol/embedding_push/case_sim.py": {
+   "sha256": "c05056015ab85ec2606b9be404f17f4ce62aa648c57d47175fbfa2000aad6d89",
+   "from": "src/uol/embedding_push/case_sim.py",
+   "original_sha256": "b85621de40249ec20cba2fa90c9803460d67b8a3e66e487c8370cad20289c9c7",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/embedding_push/colbert.py": {
+   "sha256": "39930e75a1a40918b0081b715edbfe63f2ad69bec92d818ddcf12d1549680d2a",
+   "from": "src/uol/embedding_push/colbert.py"
+  },
+  "src/uol/embedding_push/common.py": {
+   "sha256": "c859ce8bf794e494fad7c0d84f70716a2fa2700be523e496be31401c824e9f1f",
+   "from": "src/uol/embedding_push/common.py",
+   "original_sha256": "64a3a44bd03d4ecc86f587dd3a0f68aa4420758614df510c6c033003df948e94",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/embedding_push/final.py": {
+   "sha256": "810f7fb14cad249ed8e1862f99ce2f3fd5077d18fe958b18e9da980c1a0e98f1",
+   "from": "src/uol/embedding_push/final.py"
+  },
+  "src/uol/embedding_push/finetune_dense.py": {
+   "sha256": "9e0a0e2e2b451af9ad009c26af20fed1822afd99fb5f5302f8f48d69c24b0720",
+   "from": "src/uol/embedding_push/finetune_dense.py",
+   "original_sha256": "3dbfbb09ac74668cd82f9814a852cb6d8505fdafedfd2ad7f660ec8597ed64dd",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/embedding_push/fusion_ltr.py": {
+   "sha256": "dd31b8e01ab1cd6ce5484f3d4f7965eb1d44adfadea91c06654e82a0578ac519",
+   "from": "src/uol/embedding_push/fusion_ltr.py"
+  },
+  "src/uol/embedding_push/memory_proto.py": {
+   "sha256": "3dfa898c0805f43fa470847f80b97c848b0a472f34623b2a6e78c276003934ad",
+   "from": "src/uol/embedding_push/memory_proto.py"
+  },
+  "src/uol/embedding_push/qwen_endpoint.py": {
+   "sha256": "c13bb698d3bbc4d46541b420b2ef9cf95cf7fe77e3c4483bd9997265a22e3890",
+   "from": "src/uol/embedding_push/qwen_endpoint.py",
+   "original_sha256": "1534ecfb63207cf0adc85fc0566e9109b7fe281b8e34a84a52f910d4483872d4",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name",
+    "server address replaced by a setting"
+   ]
+  },
+  "src/uol/eval_lenses/__init__.py": {
+   "sha256": "8520ced6d2e54463810883e29009a5ad7b925fa0ce1da576e7c027228306c3a8",
+   "from": "src/uol/eval_lenses/__init__.py"
+  },
+  "src/uol/eval_lenses/core.py": {
+   "sha256": "db3b536a734e5087d236414e669345fa4b97d303fc79bf9b7a57aa78b66833e0",
+   "from": "src/uol/eval_lenses/core.py"
+  },
+  "src/uol/eval_lenses/e6_agent.py": {
+   "sha256": "2c2ec9358c68c99427d3cdd5270f1b251bc1292ab41f9e5aaaa74e8326a16734",
+   "from": "src/uol/eval_lenses/e6_agent.py"
+  },
+  "src/uol/eval_lenses/lenses.py": {
+   "sha256": "a61018f200e3eae5cd418e9728690c03a10a7c767f515dafc88c544ef2f1477b",
+   "from": "src/uol/eval_lenses/lenses.py"
+  },
+  "src/uol/eval_lenses/llm_alone.py": {
+   "sha256": "ea82a094ec9e6d6b6d7236dc9b56ea72f9070248dca1f51720fb9fde95927c41",
+   "from": "src/uol/eval_lenses/llm_alone.py"
+  },
+  "src/uol/eval_lenses/prompts/E6_agent.txt": {
+   "sha256": "326e7e732827a5312900c10c5deb84c7691b96bcf7d2f1b9c911e74c24fd9bb4",
+   "from": "src/uol/eval_lenses/prompts/E6_agent.txt"
+  },
+  "src/uol/eval_lenses/prompts/E6_list_agent.txt": {
+   "sha256": "8a3d9c7ecf9a59f2ccf37a93f5e96384e3acdb3f2e195ed865b4fe74ffe8a5ab",
+   "from": "src/uol/eval_lenses/prompts/E6_list_agent.txt"
+  },
+  "src/uol/eval_lenses/qk.py": {
+   "sha256": "0733de68382525ff34e1cde881c8412d7f96fe8f9a47e327af3d46f2d03de6f1",
+   "from": "src/uol/eval_lenses/qk.py"
+  },
+  "src/uol/facts_to_law/__init__.py": {
+   "sha256": "da69520f42b5baaa4c6444a6ccba4425856c1fe1a26f57303b2fd7c3f4201ee1",
+   "from": "src/uol/facts_to_law/__init__.py"
+  },
+  "src/uol/facts_to_law/audit.py": {
+   "sha256": "19085c11248fbd6f964e30a9977e7a96f593f1f363eb3794daf4094d2e71bff4",
+   "from": "src/uol/facts_to_law/audit.py"
+  },
+  "src/uol/facts_to_law/bge_gpu.py": {
+   "sha256": "5c22d51bfbb4bf6d90e281f7c0065a0f97ecbd92d9a08896840f417e1ef01217",
+   "from": "src/uol/facts_to_law/bge_gpu.py",
+   "original_sha256": "5cfca749ade96b52fc6f378bfd8b0daa0f0fd66ce3fedfb68e731ba17d1d9d2d",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/facts_to_law/catalogue.py": {
+   "sha256": "837ab14bb2fe447d4650a78957b5e62ad0a0b78741312d3a049be3d97bbf743f",
+   "from": "src/uol/facts_to_law/catalogue.py"
+  },
+  "src/uol/facts_to_law/crossfit.py": {
+   "sha256": "d8fcf37704f3894e7a2746c00b8004b082265597f74d69f3ccd6555fd3627b81",
+   "from": "src/uol/facts_to_law/crossfit.py"
+  },
+  "src/uol/facts_to_law/dense.py": {
+   "sha256": "4967abc7093f809d3324e8ac5e4d6b8bb9c60bc956f8f19ff09da4e60bc64d97",
+   "from": "src/uol/facts_to_law/dense.py",
+   "original_sha256": "262f094fd550786f212b25f0424606f6f6b07a52a10453f2fd17b0c5bc289c2d",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/facts_to_law/fusion.py": {
+   "sha256": "dee33b22c1f49ab3592ae7ef8a0cf8f9b771ec440b3b7897e6204acdd880c1bd",
+   "from": "src/uol/facts_to_law/fusion.py"
+  },
+  "src/uol/facts_to_law/knn.py": {
+   "sha256": "2cafa38211c741680be141525d75e7dd2122b972e9f475cbac078f18a7bb5680",
+   "from": "src/uol/facts_to_law/knn.py"
+  },
+  "src/uol/facts_to_law/lexical.py": {
+   "sha256": "aa39766ea3226367fbfe2411505f2951425ef4b1a463ffeb299b6246579b872b",
+   "from": "src/uol/facts_to_law/lexical.py"
+  },
+  "src/uol/facts_to_law/metrics.py": {
+   "sha256": "3decd5fdab6d1149b1dcfc378d655a819dd28b2933bf8ca6545e41eb6b719115",
+   "from": "src/uol/facts_to_law/metrics.py"
+  },
+  "src/uol/facts_to_law/prior.py": {
+   "sha256": "ae74723e4bfa032c171c1398b10503a3488e8c22243f2f0d88e4f7a695e19ea8",
+   "from": "src/uol/facts_to_law/prior.py"
+  },
+  "src/uol/facts_to_law/references_v2.py": {
+   "sha256": "16e3e75a39381fcb34f3676cb356247af19bcc9eec94d32ad13b1123763f2e6d",
+   "from": "src/uol/facts_to_law/references_v2.py"
+  },
+  "src/uol/facts_to_law/release.py": {
+   "sha256": "f23fb83219a841c683a90668f363d4761ec9d1545a9447b91f2c553dfc4d4121",
+   "from": "src/uol/facts_to_law/release.py"
+  },
+  "src/uol/facts_to_law/run.py": {
+   "sha256": "de624f810110dae2df666e6595ca4f1514783e23d7ad100c24e95b9f79231e95",
+   "from": "src/uol/facts_to_law/run.py"
+  },
+  "src/uol/facts_to_law/sources.py": {
+   "sha256": "4c6ae5ca5fc996f8a68e1f978a01cc559cced38412e813ab613850dc2625534e",
+   "from": "src/uol/facts_to_law/sources.py",
+   "original_sha256": "273d7fed3e5781f12aa846be28334848aaa929dcec2dbe1366d3f85f97dbbb66",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/facts_to_law/spec.py": {
+   "sha256": "5cf349e683161896754cd1cbac4f64c8d1c7154a6a196ff7282b14b38bdaed63",
+   "from": "src/uol/facts_to_law/spec.py"
+  },
+  "src/uol/facts_to_law/stats.py": {
+   "sha256": "27d8a7267cde795d8ca1b96a254facff9bf964920987bbab6ad8cc5d00ce23d3",
+   "from": "src/uol/facts_to_law/stats.py"
+  },
+  "src/uol/facts_to_law/strata.py": {
+   "sha256": "2185aa65c0e89eb7cdca2aec322be936af040ce6b68b4a9a686639608fbc6ea9",
+   "from": "src/uol/facts_to_law/strata.py"
+  },
+  "src/uol/facts_to_law/targets.py": {
+   "sha256": "8d4a26fa3a95d2f2275916d8684fc354c6e6d64065ddebefb12049f500b08b3e",
+   "from": "src/uol/facts_to_law/targets.py"
+  },
+  "src/uol/final/__init__.py": {
+   "sha256": "0274c45f550cd84c7f0a20df46deed4ac7a36ea955767a7df233e9a32585d716",
+   "from": "src/uol/final/__init__.py"
+  },
+  "src/uol/final/__main__.py": {
+   "sha256": "03af7a2ec33a9368932ebcd6ecc53078dc9eab5c396a905faced01350836ffbc",
+   "from": "src/uol/final/__main__.py"
+  },
+  "src/uol/final/adapters/__init__.py": {
+   "sha256": "e1629e42ef23e8609dde73b385c48fab42359bdeec50579a167b461e150ebe2b",
+   "from": "src/uol/final/adapters/__init__.py"
+  },
+  "src/uol/final/adapters/adapted.py": {
+   "sha256": "64a8bbca81085fc8a2f0d289582608d8bc7c3628922bc0722c9797059c3509b4",
+   "from": "src/uol/final/adapters/adapted.py"
+  },
+  "src/uol/final/adapters/base.py": {
+   "sha256": "73f41ab8a04007644c27ca86815b040c644d779f40252fb78ef755ea8a4a89ab",
+   "from": "src/uol/final/adapters/base.py"
+  },
+  "src/uol/final/adapters/dense.py": {
+   "sha256": "17c59d158b2e68e798e21c07c444a41ce046698677b1f8147871cb8c932d79a0",
+   "from": "src/uol/final/adapters/dense.py"
+  },
+  "src/uol/final/adapters/fusion.py": {
+   "sha256": "162495375762e14332f77a36043cc095e17eb140252e3fc5568d50a9b8b73fcb",
+   "from": "src/uol/final/adapters/fusion.py"
+  },
+  "src/uol/final/adapters/gpu.py": {
+   "sha256": "58981d2fd9782c682aa8837a651f5764edda174913be71ff75de45d776ded7bb",
+   "from": "src/uol/final/adapters/gpu.py"
+  },
+  "src/uol/final/adapters/lexical.py": {
+   "sha256": "3c0185932e988cc6798afe6824187fbf11558d960f528073591b58423d977156",
+   "from": "src/uol/final/adapters/lexical.py"
+  },
+  "src/uol/final/adapters/llm.py": {
+   "sha256": "801b55901cf50c9e852979197f491fad4c8a144b33a90eac943340237a6c7d25",
+   "from": "src/uol/final/adapters/llm.py"
+  },
+  "src/uol/final/adapters/loaded.py": {
+   "sha256": "632b3c5d2040a484f75780e692e92b360f5ee89c284d2fa159e05160de6a0081",
+   "from": "src/uol/final/adapters/loaded.py"
+  },
+  "src/uol/final/adapters/ltr.py": {
+   "sha256": "1129082fc3313d0650c11a8b352de31a2fc2f20975ac300ccf68af6f399ed38d",
+   "from": "src/uol/final/adapters/ltr.py"
+  },
+  "src/uol/final/adapters/reference.py": {
+   "sha256": "27a94198e0cbbee0a4cb6effb76b2a78d698c0f2339589cd71a5b889af2442e5",
+   "from": "src/uol/final/adapters/reference.py"
+  },
+  "src/uol/final/adapters/topic.py": {
+   "sha256": "4e33b03f9281c080fbbaa248f02d76e04643c655a171393b5d63c1d974bcb5f6",
+   "from": "src/uol/final/adapters/topic.py"
+  },
+  "src/uol/final/assign.py": {
+   "sha256": "3543421acfb8d1c2d01a808f03e0a0d3ef8d978f95508f5f03631d326b2f26b2",
+   "from": "src/uol/final/assign.py",
+   "original_sha256": "51deca96ecd503489299c21e8aa5a815429a91b7d3f01df7930dd7d07d679558",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/audit_d181_common.py": {
+   "sha256": "53cd127384d0bcbb29ade4df38348be3b7fcaf5e9c82fcd5d184eb6952270096",
+   "from": "src/uol/final/audit_d181_common.py",
+   "original_sha256": "7d7c6b6877ffbd389b3fbb7b98f68c0e80744487f9684ac99355ecbeddcb468f",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name",
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/audit_d181_dev.py": {
+   "sha256": "f04136cd6f4f1ffbae2884b216feaa0f3126b3e83b8aa6942b76ff642179bcd1",
+   "from": "src/uol/final/audit_d181_dev.py",
+   "original_sha256": "83e593217f034e2255b2225e803cc8f76f89f29466b399166f1f266f676b6adf",
+   "changed": [
+    "a scheduling wrapper of the build machine removed from the usage example",
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/bsard_alone.py": {
+   "sha256": "5e265d512ba49f30569ad0c2bef32ae76760af4fd1f2437e734b92bb2e9c5cc1",
+   "from": "src/uol/final/bsard_alone.py"
+  },
+  "src/uol/final/bundle.py": {
+   "sha256": "a3bcd250e5f6fcc269c538011341b2a7b0a4ca269cb9993d4b478bf93e24e83a",
+   "from": "src/uol/final/bundle.py",
+   "original_sha256": "e878c09dbdcb5c55f3c1b0fdf118140e2bad138570fc620a8b3c376317c31a67",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/bundle_overlay.py": {
+   "sha256": "706dd0082777be69eba9bdbf4ba60ae6fe0056c7512b6d34f08168c1694a7b62",
+   "from": "src/uol/final/bundle_overlay.py",
+   "original_sha256": "04103de09e79e3be473c279242dd74a7a61cd24d23cac9f7b4586e7e0fed4e84",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/final/c2.py": {
+   "sha256": "72f37ad47ff5ea4aee8a47d2ab1b845fd30fb71a04e7e6edf5875b087a3b2836",
+   "from": "src/uol/final/c2.py"
+  },
+  "src/uol/final/classifier_baseline.py": {
+   "sha256": "d45c55d6edfbbb104aacc848c1dc713117d3195c7c586d547285b20e12e3c17c",
+   "from": "src/uol/final/classifier_baseline.py"
+  },
+  "src/uol/final/codex.py": {
+   "sha256": "fa4340a5350630d2050b714db0de6ce284142a7378f8d4ad7d4842ca212f02fa",
+   "from": "src/uol/final/codex.py"
+  },
+  "src/uol/final/context.py": {
+   "sha256": "35dd1520b75dca4107880327f8eb2c37295db09eb150f2263849c02ee262956e",
+   "from": "src/uol/final/context.py"
+  },
+  "src/uol/final/cost.py": {
+   "sha256": "66579c922ced3fff8f95d5ddf6a7b58360792388e1c7ddf3eb76dacf916cbc6c",
+   "from": "src/uol/final/cost.py"
+  },
+  "src/uol/final/devb.py": {
+   "sha256": "1a8fd5f00650144143d1d68eb928826db04be31195bdbbf6efd2db9ceafd24d8",
+   "from": "src/uol/final/devb.py"
+  },
+  "src/uol/final/devl.py": {
+   "sha256": "39f7709708971cac1aab85dcff396ae7d12edd3972d8b5f903b404591f6d6574",
+   "from": "src/uol/final/devl.py",
+   "original_sha256": "320d814732ffc0e6c990715fa025e9c103358c0720d8efa1135fc322f82aa40f",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/devn.py": {
+   "sha256": "ab2ffa5ae8283f807558ad1969baaca6298468547eb3a7393d8912df88428e8d",
+   "from": "src/uol/final/devn.py"
+  },
+  "src/uol/final/devs.py": {
+   "sha256": "e555884fc77756cccb3159273409bff1266ca70af86a8d1b5be18ffbb0fbc688",
+   "from": "src/uol/final/devs.py"
+  },
+  "src/uol/final/external.py": {
+   "sha256": "e2c63b89857760997cbeabde425bf820ef7b0fd6f456c793f3e863e127439af7",
+   "from": "src/uol/final/external.py"
+  },
+  "src/uol/final/footing.py": {
+   "sha256": "e66bff9e1cd78ab2e3698365a0892b815a3d9e0a7a8339ee3695240f2ec33701",
+   "from": "src/uol/final/footing.py",
+   "original_sha256": "301ad64eb2f3d77668f32279310efcbe5aefd0ea5772690ef9012df5a1e32524",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name",
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/g1.py": {
+   "sha256": "77e362e53a327761ab09639bc41214e194071c81d735f63f0ec3c61851ba073d",
+   "from": "src/uol/final/g1.py"
+  },
+  "src/uol/final/gpu_jobs/__init__.py": {
+   "sha256": "67484f4a7b794fd3cc7f91b83cbb26173c844eeafb9e54d420ac8f6107bff311",
+   "from": "src/uol/final/gpu_jobs/__init__.py"
+  },
+  "src/uol/final/gpu_jobs/bge_m3_ft.py": {
+   "sha256": "30a1d0c7afa3ff9e92a9557ad3bbc7aeafd540cc67332d51d9d2429d5496b914",
+   "from": "src/uol/final/gpu_jobs/bge_m3_ft.py"
+  },
+  "src/uol/final/gpu_jobs/bge_m3_sparse.py": {
+   "sha256": "cbb125ce80660ba71e11ada82fcc513c22bd8da12000128a76f57857a5dbecff",
+   "from": "src/uol/final/gpu_jobs/bge_m3_sparse.py"
+  },
+  "src/uol/final/gpu_jobs/colbert_full.py": {
+   "sha256": "642fff5e1d5c5b7d5a7f90afd3c8472084798101b96bb7c5051556a746cc3a7a",
+   "from": "src/uol/final/gpu_jobs/colbert_full.py"
+  },
+  "src/uol/final/gpu_jobs/new_encode.py": {
+   "sha256": "e6f9088fae075eda40718d103a4c81e0eb1f701f50f611fb1309c48fa4d98b27",
+   "from": "src/uol/final/gpu_jobs/new_encode.py"
+  },
+  "src/uol/final/gpu_jobs/new_runner.py": {
+   "sha256": "39696889b63465a6bf06c4d425dfb97b2d47d08c124eeea734a941821fbe0274",
+   "from": "src/uol/final/gpu_jobs/new_runner.py"
+  },
+  "src/uol/final/gpu_jobs/query_server_job.py": {
+   "sha256": "49dcd299788e1c0eb3d6f8a7dfd7b16c3d00c7a43e1d72562329455e58e4684d",
+   "from": "src/uol/final/gpu_jobs/query_server_job.py"
+  },
+  "src/uol/final/gpu_jobs/st_encode.py": {
+   "sha256": "def9992fa670d3c123463cbfb2a26decd68fdf029950342c1f76bf4fe411eded",
+   "from": "src/uol/final/gpu_jobs/st_encode.py"
+  },
+  "src/uol/final/gpu_jobs/timing_encode.py": {
+   "sha256": "ca292a972b7f511a0c24a371dfa03b9234484736988be47a854a776c709c8b57",
+   "from": "src/uol/final/gpu_jobs/timing_encode.py"
+  },
+  "src/uol/final/gpu_jobs/timing_encode_cpu.py": {
+   "sha256": "b9f9ae1273def8ac8bba41225f186e5df186466854a0433a5f472a72a8676e40",
+   "from": "src/uol/final/gpu_jobs/timing_encode_cpu.py"
+  },
+  "src/uol/final/gpu_jobs/timing_encode_ranker.py": {
+   "sha256": "ceaceda14a0f3101ca4f460fde37bbcab3e09112ebca8932d1a73986fd4c3834",
+   "from": "src/uol/final/gpu_jobs/timing_encode_ranker.py"
+  },
+  "src/uol/final/gpu_jobs/whole_encoder_server.py": {
+   "sha256": "69e5a50ac7eccf19b19abe5e09b1552aa732cc8772b784dc2739965d30657024",
+   "from": "src/uol/final/gpu_jobs/whole_encoder_server.py"
+  },
+  "src/uol/final/gpu_prep.py": {
+   "sha256": "577021fe45349ba93e57d4ecb7c2340cabfa304038b8c249becb3cf135bc2a9b",
+   "from": "src/uol/final/gpu_prep.py"
+  },
+  "src/uol/final/guard.py": {
+   "sha256": "bb9a449d1866573350f5cbdf506a54b788f3ab6546f7421175dcf409c30f475d",
+   "from": "src/uol/final/guard.py"
+  },
+  "src/uol/final/harness.py": {
+   "sha256": "ada8c5725b939daa6b18501811582b347748b84603f9c8ee5ee7870337bc00c1",
+   "from": "src/uol/final/harness.py"
+  },
+  "src/uol/final/lean_rerun.py": {
+   "sha256": "0f766560066a40156d05c89a13fcf64341a15c0ebcecf26832ddd8fa3e76aaa8",
+   "from": "src/uol/final/lean_rerun.py",
+   "original_sha256": "0386c4a9b8491c03eebe348193fcccd956314ffbc8472ad27a7f0490c8b912d5",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name",
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/learned_merge.py": {
+   "sha256": "a9ab9d7d5861c650f6bc61072c096ae25a54c7790f5efd16c1d6456d350e5b75",
+   "from": "src/uol/final/learned_merge.py"
+  },
+  "src/uol/final/llm_agents.py": {
+   "sha256": "1d355b2933cd831590e71f0d1da064948883904fd85d9e532735948632664034",
+   "from": "src/uol/final/llm_agents.py",
+   "original_sha256": "8e7ccbeff3ea46233a2d87e33d3106a4d305021eb60ad3bbdff70d2655bc4827",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/llm_cost.py": {
+   "sha256": "d4a6cbaac34c9645ee482ea28062de3234760f857def96446d7482f7fb34c9fc",
+   "from": "src/uol/final/llm_cost.py"
+  },
+  "src/uol/final/llm_jobs.py": {
+   "sha256": "f8c6deaa084f22f526eee35d923dab60b5f4e480787036a7d3ac8b1ea60aa45c",
+   "from": "src/uol/final/llm_jobs.py"
+  },
+  "src/uol/final/m1_rows.py": {
+   "sha256": "7023ba11ecf6cef6c479201ad1a1f42688330bd0f6a9b2b910ec76abb6bf0a8c",
+   "from": "src/uol/final/m1_rows.py"
+  },
+  "src/uol/final/measures.py": {
+   "sha256": "425f9637705c3713b80e61e8b4ad50113ec01bdd9f4e80ff63f47aeefcdcce37",
+   "from": "src/uol/final/measures.py"
+  },
+  "src/uol/final/merge.py": {
+   "sha256": "f7fb104617d06ca154cfe024ef9093cd96c595c6a1f8bfcf462d5fd7642d0ab2",
+   "from": "src/uol/final/merge.py"
+  },
+  "src/uol/final/model_limits.py": {
+   "sha256": "eee7bf4ba4a1023415dd68ab71a3097a8d3a6308ffa4af432091961798c8752c",
+   "from": "src/uol/final/model_limits.py"
+  },
+  "src/uol/final/multivector.py": {
+   "sha256": "87a7f877509e912b95e1d6c3a6c54578a8d2625a3fe649cc75d4080e4f372398",
+   "from": "src/uol/final/multivector.py",
+   "original_sha256": "e963066ab2a92641fb0fd0cb884a446297ba28922451369d09b24c1bb70a6549",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/final/mv_ranker.py": {
+   "sha256": "66c875a1f6855ac9da7a377923f5ffa3dbbab1a3b9d41707a0fb0e81fd2d170f",
+   "from": "src/uol/final/mv_ranker.py"
+  },
+  "src/uol/final/new_cases.py": {
+   "sha256": "54b5b50dddbcc7142d228dbceae2e3a9a0526c417f6eb474e9953b65fc8f72b1",
+   "from": "src/uol/final/new_cases.py"
+  },
+  "src/uol/final/new_cases_fit.py": {
+   "sha256": "3c3a135be82d258dc4b1699c8cdb8d6f0e3a3200c3774c5f33de91f70cd07578",
+   "from": "src/uol/final/new_cases_fit.py",
+   "original_sha256": "110e057da474fcb5c15a3980d02cccf38433fcc1f5173f64bc12ca0d960617c5",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/final/new_cases_llm.py": {
+   "sha256": "5a8593af7a2cfc18502e9409ad03bb06d9c26462398486d00ffa5c578e4749fa",
+   "from": "src/uol/final/new_cases_llm.py"
+  },
+  "src/uol/final/new_cases_report.py": {
+   "sha256": "880b204f2032397d12f87f4b75d122d6b644c576cb4741adb3a3b2355f1c6677",
+   "from": "src/uol/final/new_cases_report.py"
+  },
+  "src/uol/final/new_cases_sources.py": {
+   "sha256": "bdf8af6eec0d302dd976e21eb6be18dae202d6306de289ad86ec2dd60bc4849b",
+   "from": "src/uol/final/new_cases_sources.py"
+  },
+  "src/uol/final/new_cases_steps.py": {
+   "sha256": "37fc3871b77e95f2a1180fc1d972036ccc61174ac7e6913e9ccc491b59adc8cb",
+   "from": "src/uol/final/new_cases_steps.py",
+   "original_sha256": "a428d394831f0f3106c2976a18ba08677d45589276064cacf27c1434b79d3c35",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/overnight.py": {
+   "sha256": "3ebe87269cc3fb2313975a3e289ce8576a067ca00068f63ef355fabe1191897d",
+   "from": "src/uol/final/overnight.py"
+  },
+  "src/uol/final/pack.py": {
+   "sha256": "1a0d70d94b4ca34f6008cebb24b8f3f4e32a0357aa8ea6a364b28426a5705b56",
+   "from": "src/uol/final/pack.py"
+  },
+  "src/uol/final/packing.py": {
+   "sha256": "377544269d4449121b1f16a278f9cbd28354e2c747d014736b4bce1e0f5302e3",
+   "from": "src/uol/final/packing.py"
+  },
+  "src/uol/final/plan.py": {
+   "sha256": "4d45220579d37f8a1e514b8a4ab96df906cbb4a6f8c684248cded2d60c572a7a",
+   "from": "src/uol/final/plan.py",
+   "original_sha256": "df4952fa802464d74ff9b4b01b76be3b239d6050ebd2fdfc2a470394acb9a329",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/pointwise.py": {
+   "sha256": "048c89f812708a23124ba0436bd0e016699fd19efb8d14edfca883ff30c79b94",
+   "from": "src/uol/final/pointwise.py"
+  },
+  "src/uol/final/populations.py": {
+   "sha256": "15e1fabebff10d331f98587a94fa5a20dc72424949eb246e896ad57fefbfb350",
+   "from": "src/uol/final/populations.py"
+  },
+  "src/uol/final/prompt_check.py": {
+   "sha256": "77b7e37a8d4612e9ca5660759314f22f20caa6c78f66df83e39ce56bf6c189d4",
+   "from": "src/uol/final/prompt_check.py",
+   "original_sha256": "14556e098d3b54e022353319a28db3a88bb8d73ed8abd3a05d98ef9a15afe120",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/prompts/P1_pointwise.txt": {
+   "sha256": "bbc3080b81f5a7e23d91faacb2e9121fe3671bb95650d65c2f475460b474cafa",
+   "from": "src/uol/final/prompts/P1_pointwise.txt"
+  },
+  "src/uol/final/prompts/hyde.txt": {
+   "sha256": "a28cbe3dd8b53e2bd1c7b2495786d788e62e016dfe1d579b9b9dca4196a61ae6",
+   "from": "src/uol/final/prompts/hyde.txt"
+  },
+  "src/uol/final/query_int8.py": {
+   "sha256": "0cc387220fe074f0db13d32ba6f4871c741e5ace89feed74558964a7dd1ee913",
+   "from": "src/uol/final/query_int8.py",
+   "original_sha256": "30594ff3506878add65a93119cd34b071dbed41f21991aef4d7134a8ca034d96",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name",
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/query_server.py": {
+   "sha256": "4ac69ca250071d0a98b2ebf67acebc6931df87ef3d381f6d83bb03dd595e6f16",
+   "from": "src/uol/final/query_server.py",
+   "original_sha256": "e49abec01e57bb7f039218f3b09012db82acb8ea07d200d57fbd0e56faae6d28",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/final/qwen_local.py": {
+   "sha256": "e51f97519f43e2a5d90574937d754a2206f9380b84aa4d5120b134f6b5479cb2",
+   "from": "src/uol/final/qwen_local.py"
+  },
+  "src/uol/final/ranges.py": {
+   "sha256": "3081d2b4743fec0f8b3c98944b403aa67a9ba6975bb360309cda59e57dd0b3b5",
+   "from": "src/uol/final/ranges.py",
+   "original_sha256": "6e431efdfd393d63994f292c7c79512afbb0908f6464b42728356e959ff9663b",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/rank_rerun.py": {
+   "sha256": "6e37f7c9099e4675a9d149fcab0c10dad1461ae41edfbb98cb5010d85351812c",
+   "from": "src/uol/final/rank_rerun.py",
+   "original_sha256": "3f1307527f74b54c81cd04904c31da698bcd4251e059d5edc655669fe78d48c0",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/rank_timing.py": {
+   "sha256": "6e5d813ae1d1a3ad5359d7fb5f66d3166c4fbef717ebfd2b7a234297052a0ebb",
+   "from": "src/uol/final/rank_timing.py",
+   "original_sha256": "e86f705e258fa8a467943fde0cf71cebd31ae5aae9e1c26273dec5a83171c507",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/final/ranker_tests.py": {
+   "sha256": "c59018992ff1c9f91e6a04b50e6531be515793c7405da3535b9050ccb4980026",
+   "from": "src/uol/final/ranker_tests.py",
+   "original_sha256": "3843d8709bc382e3df28ca0e0e9b1c1774ee84a0e481d85e4629d66ccd73e2f9",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/rebuild.py": {
+   "sha256": "07e0c98a233f669f4852ff9574f634aa5a457e1eedf729eb2a47a7498840df56",
+   "from": "src/uol/final/rebuild.py"
+  },
+  "src/uol/final/registry.py": {
+   "sha256": "6e594be8c8dfec5f821036a7bd3f4f5ab0d6b69ac8c0637c82c50a386e3af3b0",
+   "from": "src/uol/final/registry.py",
+   "original_sha256": "51049d69ac29d5a9b73b17cba310044d036c5ce2c7cf2021a7f9d3f39eacaf9a",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/report.py": {
+   "sha256": "189129103f25a90c91ddcb03cf1db81db17dd97264c7a98e266d6349b4fa7ecf",
+   "from": "src/uol/final/report.py"
+  },
+  "src/uol/final/rerank_jobs.py": {
+   "sha256": "81b275871783fd7229129dfdb729f3ce6f7afc489a89fc30e9f83a3dbfc059ac",
+   "from": "src/uol/final/rerank_jobs.py"
+  },
+  "src/uol/final/setup_files.py": {
+   "sha256": "df230948bb4356880ec663ef3b265239a4536965d0ad750aa06ef7bc9d2fa178",
+   "from": "src/uol/final/setup_files.py",
+   "original_sha256": "3b43daa33edc0e70bf02e01a071d138bd0cd6f14ddbe698ef31b17553ae89c9f",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/final/stats.py": {
+   "sha256": "ed5ebb8ef3fca2c2689788eb975a5dea30feb9dfd67af40ff9111fd9b7b6c7e5",
+   "from": "src/uol/final/stats.py"
+  },
+  "src/uol/final/systems.json": {
+   "sha256": "2e41a93e4d6f623aee07b4337d311639f441479979c2cdd4cf80adc29b6908bd",
+   "from": "src/uol/final/systems.json"
+  },
+  "src/uol/final/test_final.py": {
+   "sha256": "39905d7cbd54459d3b6f5ba4fb433b6730cb39433e2592b1ba82dd2b6f47c670",
+   "from": "src/uol/final/test_final.py"
+  },
+  "src/uol/final/test_set.py": {
+   "sha256": "7d5958df249f2c79bd410bb457737cd0d58adaee99a1067a8a58176cfd4fb86c",
+   "from": "src/uol/final/test_set.py"
+  },
+  "src/uol/final/timing.py": {
+   "sha256": "9b0ae70b77e26ce44bafd3f72e0c16bf2189b11260f016f64de42797bb737fb6",
+   "from": "src/uol/final/timing.py",
+   "original_sha256": "7cb12a41131c9c097bb4583188062f53bb465a75446a44614ff5e31347cc172f",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/final/timing_ranker.py": {
+   "sha256": "1790093d047e575de195ddba09b9f11c81dd7fa1b08428148a466373824d7117",
+   "from": "src/uol/final/timing_ranker.py",
+   "original_sha256": "0568861558ce9942cee64186b04f191f489c07db95227ca4e5ddf92d573fe53c",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/final/timing_sources.py": {
+   "sha256": "c53d9f9f7e8fbdc7c838d6b38b055b42570c28d82f1ee41163e5e7ec405f0dd3",
+   "from": "src/uol/final/timing_sources.py"
+  },
+  "src/uol/final/variants.py": {
+   "sha256": "c78bfb70232bd0a991a40ce2d0d5d89b775b970a04f23effb3cadca52d487c15",
+   "from": "src/uol/final/variants.py"
+  },
+  "src/uol/final/weight_check.py": {
+   "sha256": "6d5c5880d5f67eac8d9c6cb5d206b4af286dc9d4e197dba6577ed5edbe3499df",
+   "from": "src/uol/final/weight_check.py"
+  },
+  "src/uol/final/whole_run.py": {
+   "sha256": "dd4516e0713bc16435101d1a8c4c047034b732449343420d8a0937704217338c",
+   "from": "src/uol/final/whole_run.py",
+   "original_sha256": "2e2b13e796be5444204e452ecbd9c3de4307321979df3d01ef9176d02c4497c5",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/whole_test.py": {
+   "sha256": "d9d1c723bcc27d34982cb944787de5aac8e9509ba03cdeb493e27fcdc5118884",
+   "from": "src/uol/final/whole_test.py",
+   "original_sha256": "7ea02d5a3660a5fbbe23687db8a2a597a46b5c2b1cfe3469fcb7eff10424fdcc",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/why_models.py": {
+   "sha256": "9d0078218fca7acbec5fee794d6b2e57e19924afbec9cea163f288da70c11910",
+   "from": "src/uol/final/why_models.py",
+   "original_sha256": "c9cfaab3498f7937533c075cd36a6aae3d648f160ee1ea7af2ef09866c152fe8",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/final/why_no_test_case.py": {
+   "sha256": "cf345180725d8ec3e2a023be2da434760de3cda18f1f09a266f783c90abe3ab7",
+   "from": "src/uol/final/why_no_test_case.py"
+  },
+  "src/uol/gap_tests/__init__.py": {
+   "sha256": "878ece0833db1aef24c0d8d07198b80274fe0767fcae5f52412ea51d6d2ef02b",
+   "from": "src/uol/gap_tests/__init__.py"
+  },
+  "src/uol/gap_tests/common.py": {
+   "sha256": "455047ed51eb0e0223d84db3b388c6c9b2d64b53c015ae72b7ac6814b4a465a8",
+   "from": "src/uol/gap_tests/common.py"
+  },
+  "src/uol/gap_tests/d58_refit.py": {
+   "sha256": "6956b87b3b2d5658a3889a6b20d74992b0a9fe1ecbaa387b054af882ef9ccc81",
+   "from": "src/uol/gap_tests/d58_refit.py"
+  },
+  "src/uol/gap_tests/lexical_grid.py": {
+   "sha256": "ebaf68a845c7b344ea6c8b010521f4f092d49daf27a436a42c97fab85af65258",
+   "from": "src/uol/gap_tests/lexical_grid.py"
+  },
+  "src/uol/gap_tests/ltr_listwise.py": {
+   "sha256": "017c2825784f1f68114eae262893bf649c6ed0f9f4ac31cad2e175d69a386a83",
+   "from": "src/uol/gap_tests/ltr_listwise.py"
+  },
+  "src/uol/orchestration/__init__.py": {
+   "sha256": "1fb930423b77dbc05f44e3187cd0a92667f6b53285045018ad852e7fad9fe2f1",
+   "from": "src/uol/orchestration/__init__.py"
+  },
+  "src/uol/orchestration/embedding_usefulness/__init__.py": {
+   "sha256": "e3c5a09c8ea2767caed9e27f108406ba50ad02da33aa04480123627b846886eb",
+   "from": "src/uol/orchestration/embedding_usefulness/__init__.py"
+  },
+  "src/uol/orchestration/embedding_usefulness/encoder.py": {
+   "sha256": "0349fa1d85ced715306edb911a74f4b786150ed40eb19aca2d6320f94aa883b4",
+   "from": "src/uol/orchestration/embedding_usefulness/encoder.py"
+  },
+  "src/uol/paths.py": {
+   "sha256": "a6e82653e3e555bc669ff0480601216168fa81a0d03f6694f08c9c18e00452ee",
+   "from": "src/uol/paths.py"
+  },
+  "src/uol/prototype/__init__.py": {
+   "sha256": "bf70ee341d098591d9babc5a5068e912e7cc0ff364493b550dcde8a6dbdd9b8a",
+   "from": "src/uol/prototype/__init__.py"
+  },
+  "src/uol/prototype/config.py": {
+   "sha256": "9e59fca8fbe3d4fdf158c3f16244e88bdfcb39edb36ffb9b2c9c9ea6976a322f",
+   "from": "src/uol/prototype/config.py"
+  },
+  "src/uol/prototype/signals.py": {
+   "sha256": "f6de18ff1b65ea4367566df401423df062c0d58e05a456a7e334fc3b5c4c6807",
+   "from": "src/uol/prototype/signals.py"
+  },
+  "src/uol/retrieval_benchmarks/__init__.py": {
+   "sha256": "579b911758236722567442a9316804f6538467048da415fdc65aa6e143dd5f37",
+   "from": "src/uol/retrieval_benchmarks/__init__.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_repair/__init__.py": {
+   "sha256": "c504ee11b98de28e32af909d824f9fae273eda34f5cb89eae995a94fb2a8565d",
+   "from": "src/uol/retrieval_benchmarks/benchmark_repair/__init__.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_repair/common.py": {
+   "sha256": "7c1f66ab919ccebbee51b412f31ff53dcbdeff59a92a94ec0210f39d6c547f76",
+   "from": "src/uol/retrieval_benchmarks/benchmark_repair/common.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_repair/grouping.py": {
+   "sha256": "d2f58109850f83265b7cbb4d4cf98ceccbd77c77bc62bcd5fe81ac7748981ed2",
+   "from": "src/uol/retrieval_benchmarks/benchmark_repair/grouping.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_repair/masking.py": {
+   "sha256": "a383c4c3e5968c044828c7f5ec1f82245034162e9c9a1de8340b96b78c223073",
+   "from": "src/uol/retrieval_benchmarks/benchmark_repair/masking.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_repair/references.py": {
+   "sha256": "9caac373905669b4e5db5bac17928df9a178f87c1628da97e23082b43408d160",
+   "from": "src/uol/retrieval_benchmarks/benchmark_repair/references.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_repair_v3/__init__.py": {
+   "sha256": "dd9744e178b1ea8546e5b4bbeaeaa000bbd1689b69aea4499c159cc25bcc3989",
+   "from": "src/uol/retrieval_benchmarks/benchmark_repair_v3/__init__.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_repair_v3/references.py": {
+   "sha256": "399e16b965a9c90b8d7608c79028e5d2a2c0c1f1c802dbcf1408a0378bf020f6",
+   "from": "src/uol/retrieval_benchmarks/benchmark_repair_v3/references.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_repair_v5/references.py": {
+   "sha256": "75f8930f484fac8b7495d990004712cb1a97c158e4eb426a457d5dc564962f1f",
+   "from": "src/uol/retrieval_benchmarks/benchmark_repair_v5/references.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_validation/__init__.py": {
+   "sha256": "2e7b98e043bf6884ac9dba2824a3fa619054dbb3c325dc642214a9608a4d1406",
+   "from": "src/uol/retrieval_benchmarks/benchmark_validation/__init__.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_validation/common.py": {
+   "sha256": "ac049534c09d3825613b1efe1c4fc5ea9c04652036d429afccda2d9cf14e6341",
+   "from": "src/uol/retrieval_benchmarks/benchmark_validation/common.py"
+  },
+  "src/uol/retrieval_benchmarks/benchmark_validation/splits.py": {
+   "sha256": "8642422b059161ca5814d006862a571acab19871efdec0329d907091172bae1f",
+   "from": "src/uol/retrieval_benchmarks/benchmark_validation/splits.py"
+  },
+  "src/uol/retrieval_benchmarks/body_backed_citations/__init__.py": {
+   "sha256": "4787055e2bbaf83081c3a34eeee9af1d2613d12095eb4bd2273d7ed1acae6f00",
+   "from": "src/uol/retrieval_benchmarks/body_backed_citations/__init__.py"
+  },
+  "src/uol/retrieval_benchmarks/body_backed_citations/common.py": {
+   "sha256": "c618308562aec3a9dacb534eca95092e9da7c1369f4bf952e9be916d5ba881f1",
+   "from": "src/uol/retrieval_benchmarks/body_backed_citations/common.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/__init__.py": {
+   "sha256": "9811aed027d01a64b024dc3ae69b9aa806c3c3021383f03948a90a463c912b8a",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/__init__.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/build.py": {
+   "sha256": "00da6db1e92ffb23caf132c5c74484e7a518653a0a8a62416604044b61458656",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/build.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/config.py": {
+   "sha256": "a449db08dbd575d5df6dcb1af20433aefa27de31d40ff9003fdd83cbf5d87459",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/config.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/experiments.py": {
+   "sha256": "9a4c8f38fdeaa4f7156f52ec2679de572cb3e2287ba6c55968db83dfdfee30ed",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/experiments.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/fast_mentions.py": {
+   "sha256": "38c626d4596ad98245631902d62b8800de43a9ae4f66e63d7609b475183299c8",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/fast_mentions.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/graph.py": {
+   "sha256": "b4dc9ba0f2b547d60917e3007f910482f036a275ec85aa670a978c4f247872e9",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/graph.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/legacy.py": {
+   "sha256": "42de994f9fb604094e678f150fb7fab0cde9b5afb3ca18a6cf245338185c5db8",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/legacy.py",
+   "original_sha256": "4ba5c103b828afbe2c2a3e3bc0b1316f0d14be586310eef651d8be71924fa160",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/precedents.py": {
+   "sha256": "a471601feb31c71cd75af9a0275ad194105f815355043d25d748ed72ad3c507f",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/precedents.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/refinement/__init__.py": {
+   "sha256": "b7c510c29f2a72dee1002e255dccfa2d76d45c811255b8501ac6880371c985c7",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/refinement/__init__.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/refinement/audit.py": {
+   "sha256": "efaad4ff7bd2923d62fd9582466c732b225d9c412c513b544297cf3603887894",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/refinement/audit.py",
+   "original_sha256": "20b9d30a800131b9c9f927cebd91d6344f3c58bba0ec3fb99db177bdf43cdff9",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/refinement/contracts.py": {
+   "sha256": "79094211d36ff307541ad7e6b17907103d5101e9590728a353ab3d525df9b1d4",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/refinement/contracts.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/refinement/metrics.py": {
+   "sha256": "0aaf255cc2077a561955040625b985fc2c95fee31054b31be38bd24d6c659574",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/refinement/metrics.py"
+  },
+  "src/uol/retrieval_benchmarks/c01_statutes/refinement/safeio.py": {
+   "sha256": "851082b0c23e7fd0de47ffada59128f0be5bef76ebcca1173e482fbd207ff360",
+   "from": "src/uol/retrieval_benchmarks/c01_statutes/refinement/safeio.py"
+  },
+  "src/uol/retrieval_benchmarks/common.py": {
+   "sha256": "ede250446d13e18660fc85b8c15e48b2f5d94186232538ba35ce731f3eff1347",
+   "from": "src/uol/retrieval_benchmarks/common.py"
+  },
+  "src/uol/retrieval_benchmarks/legal_deepening.py": {
+   "sha256": "fd6583b072b3a75fb4fe612603e64f8240ec4d42b90b4ddf9738bb148ad63f1c",
+   "from": "src/uol/retrieval_benchmarks/legal_deepening.py"
+  },
+  "src/uol/retrieval_benchmarks/legal_deepening_first_stage.py": {
+   "sha256": "2d13814c05fcdfa17bf8937ca882020541561daa1ac01d3627fa0cb64c876bc7",
+   "from": "src/uol/retrieval_benchmarks/legal_deepening_first_stage.py"
+  },
+  "src/uol/retrieval_benchmarks/quality_gate.py": {
+   "sha256": "37d84a051943c6ef3127762bf1e704a957700ccc82dc20d044d3004faa039d57",
+   "from": "src/uol/retrieval_benchmarks/quality_gate.py"
+  },
+  "src/uol/retrieval_benchmarks/refinement_suite/__init__.py": {
+   "sha256": "7d59b45ec8c29c7688a8533f840ca13be400d7ad481c92846337fb0f858a5810",
+   "from": "src/uol/retrieval_benchmarks/refinement_suite/__init__.py"
+  },
+  "src/uol/retrieval_benchmarks/refinement_suite/nonparametric.py": {
+   "sha256": "e8d3a7b56f190f1dcbf6ca6868dfed252d356861cb124e67d699c0ed973fe4f2",
+   "from": "src/uol/retrieval_benchmarks/refinement_suite/nonparametric.py"
+  },
+  "src/uol/retrieval_benchmarks/semantic_d1.py": {
+   "sha256": "dd7ff3fef4762ccf6c0d7bf03cf77535f071fdb32c1bcb9cac0a49dbd33b218a",
+   "from": "src/uol/retrieval_benchmarks/semantic_d1.py"
+  },
+  "src/uol/retrieval_benchmarks/semantic_v2_c01_c02_mp.py": {
+   "sha256": "a2dbb0cc282e6873ce3cbd10ade713716f01fe34a7619b69c566202767056137",
+   "from": "src/uol/retrieval_benchmarks/semantic_v2_c01_c02_mp.py",
+   "original_sha256": "1da1f3f4a28628e6e85515aca33bfbb4a0abb214bed8e3d8e58e0da1c9bcb568",
+   "changed": [
+    "server address replaced by a local placeholder (the variable already sets it)"
+   ]
+  },
+  "src/uol/retrieval_benchmarks/semantic_v2_common.py": {
+   "sha256": "90edb20f4ba950676e84178e7f21e55af9178a4465275c0e8b3fa94f60a7e0bf",
+   "from": "src/uol/retrieval_benchmarks/semantic_v2_common.py"
+  },
+  "src/uol/round2/__init__.py": {
+   "sha256": "d8ea37e2ff7415e0a3791b3e11c90768aed91dc107a70a09dcb99a828e4831fc",
+   "from": "src/uol/round2/__init__.py"
+  },
+  "src/uol/round2/a_common.py": {
+   "sha256": "3524d62e9cb2f43e249fcf28a3eb1c9e12cff95d070ad6405e3460a51f476b84",
+   "from": "src/uol/round2/a_common.py",
+   "original_sha256": "acef4cdae1f409998d8a6279d676c19c9a4f4018c02689c879f95ac283adbfcc",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/round2/a_p03.py": {
+   "sha256": "3699f6c6f7fe882ac15cb61de170f1d340c36558fbca73576836813efcb07fe9",
+   "from": "src/uol/round2/a_p03.py"
+  },
+  "src/uol/round2/a_p12.py": {
+   "sha256": "74c9d729fa58c8a46e26bbd54a374f29d9414b38a3ca67aa191a6e962da5032c",
+   "from": "src/uol/round2/a_p12.py"
+  },
+  "src/uol/round2/a_p14.py": {
+   "sha256": "0a2567f55ceb07d7ee92ea14ad408fedef5b0c71d91eb678e2a834f9bfca80bb",
+   "from": "src/uol/round2/a_p14.py"
+  },
+  "src/uol/round2/b_common.py": {
+   "sha256": "9efce4edbf104b43433106b8d063d1b0306fdaae888987a8c1a8b9ced5acd03b",
+   "from": "src/uol/round2/b_common.py",
+   "original_sha256": "f049de8d872fb7a681c32fd3a5f77536daa4001706205d1672f865cd1f3b0004",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/round2/b_contexts.py": {
+   "sha256": "7b30c47ec6a56701858aa568bdfd60ed10198af9e36c04aa0084b7f7d49ff174",
+   "from": "src/uol/round2/b_contexts.py"
+  },
+  "src/uol/round2/b_embed.py": {
+   "sha256": "fa5f19382fb74ddec4f0367987af085f83295c407ea85ee3d0ef4acd45aadc61",
+   "from": "src/uol/round2/b_embed.py"
+  },
+  "src/uol/round2/b_resolve.py": {
+   "sha256": "85641a4387cc8b571db9bde2cccc2f809d8fa54e0eee0edf365fef3bf12dbf71",
+   "from": "src/uol/round2/b_resolve.py"
+  },
+  "src/uol/round2/c_collect.py": {
+   "sha256": "26ad79a22388f78d2fefc12b68acfd5676016ccca2ff1b935a96213c6b8e3893",
+   "from": "src/uol/round2/c_collect.py",
+   "original_sha256": "5cd9fdaa2efd53e47d3f4e3e5497d9f79911fe467b85dcf481bf758f8731e8f7",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/round2/c_release.py": {
+   "sha256": "44fbede3be2c2dca07a8bc7b8884d921d94007cc97f0196b18bd0a073a55f87b",
+   "from": "src/uol/round2/c_release.py"
+  },
+  "src/uol/round2/c_sources.py": {
+   "sha256": "6345438ee02938d07cd0eb450c2bb9eb0b07e39893069e219bb28096658c9e46",
+   "from": "src/uol/round2/c_sources.py"
+  },
+  "src/uol/round2/glm_client.py": {
+   "sha256": "721aa866e7fb04317b9a05549264f115e6516ec0f05d446f57fe0cea4c87e851",
+   "from": "src/uol/round2/glm_client.py"
+  },
+  "src/uol/round2/h_common.py": {
+   "sha256": "357af02288077c3446d943905fbdda569913f93e4f1792b5dc788e88054c71d0",
+   "from": "src/uol/round2/h_common.py"
+  },
+  "src/uol/round3/__init__.py": {
+   "sha256": "25dc98c281f8f3a6c1f9e4da609470504d43815536e5a477c0cddcd790e1ece8",
+   "from": "src/uol/round3/__init__.py"
+  },
+  "src/uol/round3/arm_runner.py": {
+   "sha256": "2058c13a84b909223e4e6b6c85a61c9689010ca120cc9b78032e31ed9ba3626c",
+   "from": "src/uol/round3/arm_runner.py"
+  },
+  "src/uol/round3/c_hybrid.py": {
+   "sha256": "9337b98f63d1330d3ed40b317be7eea5539abb6869a67ecd2a8ebda988e2fca1",
+   "from": "src/uol/round3/c_hybrid.py"
+  },
+  "src/uol/round3/catalog_map.py": {
+   "sha256": "cf3db73b5cacec40c2acefe0084169e28959d1a2fd7c013713182aa4e2b006da",
+   "from": "src/uol/round3/catalog_map.py"
+  },
+  "src/uol/round3/common.py": {
+   "sha256": "e1bf391702b2e96bbe78330574834b3e41158b9ce196a5db2a638c6852ace6df",
+   "from": "src/uol/round3/common.py"
+  },
+  "src/uol/round3/e2_adapter.py": {
+   "sha256": "1e901ddf03c6398e3b43e371a7b9f5d6d6114b4e6aa36f5d10ed0c88a6253fd0",
+   "from": "src/uol/round3/e2_adapter.py"
+  },
+  "src/uol/round3/features.py": {
+   "sha256": "7845a1dd45fe414b93a5688b91f5e06cc52de797b6183cae05275035593243f9",
+   "from": "src/uol/round3/features.py"
+  },
+  "src/uol/round3/gpu_jobs/ep_train.py": {
+   "sha256": "d16bf9dbf76b4d6c0c8ede04a71b3d83caf3fda46a254978eafbf90bc8df6e8c",
+   "from": "src/uol/round3/gpu_jobs/ep_train.py"
+  },
+  "src/uol/round3/gpu_jobs/legal_encode.py": {
+   "sha256": "a7160a49c51f9ba70c3deda66397a8286c28399f0eab4c4890614cb33386d770",
+   "from": "src/uol/round3/gpu_jobs/legal_encode.py"
+  },
+  "src/uol/round3/gpu_jobs/r1_score.py": {
+   "sha256": "3c1d3f80eefa44a67ba2bd795279ecdd8c54e6af238130aec64903bfd0330584",
+   "from": "src/uol/round3/gpu_jobs/r1_score.py"
+  },
+  "src/uol/round3/gpu_jobs/r2_train.py": {
+   "sha256": "4654c18601f1def19eebc607bb37f9ed943fedd46e23064e7dd8774954f36d06",
+   "from": "src/uol/round3/gpu_jobs/r2_train.py"
+  },
+  "src/uol/round3/gpu_jobs/rerank_bench.py": {
+   "sha256": "14f7c61af148d64d230b9b3ab2e9847e4a4917b2a2acad237aafdfa45a82d202",
+   "from": "src/uol/round3/gpu_jobs/rerank_bench.py"
+  },
+  "src/uol/round3/gpu_remote.py": {
+   "sha256": "e39456fcf2873eb68b47e61d9b2e4e15171b860932b0419afdc59044544fe61b",
+   "from": "src/uol/round3/gpu_remote.py",
+   "original_sha256": "3d8328280e9eb2e68ca8c9ef87ac3f7051cebed8b825b22ed9c30052e2c0a514",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name",
+    "machine and server names removed"
+   ]
+  },
+  "src/uol/round3/heavy.py": {
+   "sha256": "9184e4e0c4e503125fd8ed4f9748f566eb6273280d2271ad614230462384456f",
+   "from": "src/uol/round3/heavy.py"
+  },
+  "src/uol/round3/jev_probe.py": {
+   "sha256": "e4889af7eb0a95a340648a2f95ee3c7b56e495cef206dc4abcfa3a391f7e6c98",
+   "from": "src/uol/round3/jev_probe.py"
+  },
+  "src/uol/round3/l1_luna.py": {
+   "sha256": "0391084d484912310805b343c45aef45a9fbf154fefe15e4789268581941e927",
+   "from": "src/uol/round3/l1_luna.py"
+  },
+  "src/uol/round3/l2_features.py": {
+   "sha256": "240ddd8ed2d94d4bdb00d5663eb533b59e7b4f46a74652f40dbcdf8f1982b1d3",
+   "from": "src/uol/round3/l2_features.py"
+  },
+  "src/uol/round3/l2_luna.py": {
+   "sha256": "aa0b1b8993ad5cf889d60473cf09f14229d3be920de396348d45d6adea35b8b1",
+   "from": "src/uol/round3/l2_luna.py"
+  },
+  "src/uol/round3/l4_luna.py": {
+   "sha256": "d8bb1b8ed9436cb976c09bc05e187efbc3dd51bd8afbef4e45940f6de329cb24",
+   "from": "src/uol/round3/l4_luna.py"
+  },
+  "src/uol/round3/luna.py": {
+   "sha256": "e7e4cd21743d5ddb0e5356ffdc4f8f90a13ba6ed956032cbaaaa7ed34ce47dc8",
+   "from": "src/uol/round3/luna.py"
+  },
+  "src/uol/round3/m1_memory.py": {
+   "sha256": "7ccfa4d68c6e59255da2ddad5fa00e64aaeb1051739474609ed43f0711a98121",
+   "from": "src/uol/round3/m1_memory.py"
+  },
+  "src/uol/round3/prompt_guard.py": {
+   "sha256": "73dea88927c2568acdbb67aa6f09038e257f77333c2c980f45e5a5c7cf7cf6ee",
+   "from": "src/uol/round3/prompt_guard.py"
+  },
+  "src/uol/round3/prompts/L1.txt": {
+   "sha256": "6a417a3a817aca7590eeb4106de42cf3f61434ebd60f2ff19e1f19461fde5705",
+   "from": "src/uol/round3/prompts/L1.txt"
+  },
+  "src/uol/round3/prompts/L2_a.txt": {
+   "sha256": "c2a89294181149d513cb62bee814dad8255c9772b9fb5d1e51006dbcc1ebdc52",
+   "from": "src/uol/round3/prompts/L2_a.txt"
+  },
+  "src/uol/round3/prompts/L2_b.txt": {
+   "sha256": "4770f3527e743126f5e91615ccb1f7902d279f60fd49d213b8365f931ef02c5f",
+   "from": "src/uol/round3/prompts/L2_b.txt"
+  },
+  "src/uol/round3/prompts/L4.txt": {
+   "sha256": "1601faa60f4dfd5c26d27abd9ff77e8b10cb075e52b387714477cb25e4f8876f",
+   "from": "src/uol/round3/prompts/L4.txt"
+  },
+  "src/uol/round3/prompts/closedbook_examples.txt": {
+   "sha256": "4532efcba742feba69e0a47b9d28092ff20562f6643e2a29c59c563883e7aef6",
+   "from": "src/uol/round3/prompts/closedbook_examples.txt"
+  },
+  "src/uol/round3/prompts/closedbook_rank20.txt": {
+   "sha256": "bd8faacfd324379ca0997a746c7715348f49bb3cec49efa355779dadf4d2e172",
+   "from": "src/uol/round3/prompts/closedbook_rank20.txt"
+  },
+  "src/uol/round3/prompts/probe_closedbook.txt": {
+   "sha256": "6889f04c93ef12a857f497bd6fe585304b42447a0e88e39f9927ee442ff62001",
+   "from": "src/uol/round3/prompts/probe_closedbook.txt"
+  },
+  "src/uol/round3/prompts/probe_rubro.txt": {
+   "sha256": "348964c32ae8781750011c7a5137c9fc15407f0a2b39465d2b14c4c644ba2f67",
+   "from": "src/uol/round3/prompts/probe_rubro.txt"
+  },
+  "src/uol/round3/prompts/why_probe.txt": {
+   "sha256": "1b07aba7894c933d24b34fc7f6d48670ae3ff33e963581fba5e92bedaa8990ce",
+   "from": "src/uol/round3/prompts/why_probe.txt"
+  },
+  "src/uol/round3/prompts/why_reword.txt": {
+   "sha256": "e522a902138833c3e57b4e0aa38d233f2c7013c2eecce2ec4143c1676481bbee",
+   "from": "src/uol/round3/prompts/why_reword.txt"
+  },
+  "src/uol/round3/r1_zeroshot.py": {
+   "sha256": "ac12408dbc8bf6f995abee4047ecfdba91bb72aa5fa1a8ef3e0cbf4d78f242c4",
+   "from": "src/uol/round3/r1_zeroshot.py"
+  },
+  "src/uol/round3/r2_cross.py": {
+   "sha256": "36961268b4af1e09bf894e928321dfe62d3415cb247ca40330eb8406d371c811",
+   "from": "src/uol/round3/r2_cross.py"
+  },
+  "src/uol/round3/rebuild.py": {
+   "sha256": "968e6a76573b84843b0d0ccbfbf14dfe483e04b60a1ea64c1368ed6054463628",
+   "from": "src/uol/round3/rebuild.py"
+  },
+  "src/uol/round3/remote_bundle.py": {
+   "sha256": "2cd5f3939292ac4de87e471a7d9d33116e5845cbe2d787a07c6c5203f3edbb91",
+   "from": "src/uol/round3/remote_bundle.py"
+  },
+  "src/uol/round3/remote_ep.py": {
+   "sha256": "5cb487f39cea21d7a965ef3e91d3e6e1e71bd98e8d95ab82707541f1c70fb5f9",
+   "from": "src/uol/round3/remote_ep.py",
+   "original_sha256": "65476d7174cb7352ca6692126be09931cc78e1e898b940a0f0bc96d7ac308277",
+   "changed": [
+    "a folder of the build machine replaced by a repository folder or a neutral name"
+   ]
+  },
+  "src/uol/round3/rerank_setup.py": {
+   "sha256": "a6e59e31773d064af35a4127c87ac35450263250de95ec8ba66332357fe1c37d",
+   "from": "src/uol/round3/rerank_setup.py",
+   "original_sha256": "035c198e171057994d392d2f8be1f81f4bb9abfb3312f593845eab1fd9470f29",
+   "changed": [
+    "a machine name removed"
+   ]
+  },
+  "src/uol/round3/s2_topology.py": {
+   "sha256": "beef480e1ea7693eda25c18cefcec846fa87b835ba3ea8289c179f6db92e25c5",
+   "from": "src/uol/round3/s2_topology.py"
+  },
+  "src/uol/round3/s3_cocitation.py": {
+   "sha256": "8f283e2c62820cbba013a72aaa38a91e3111511568936cad81e96b857f503ba9",
+   "from": "src/uol/round3/s3_cocitation.py"
+  },
+  "src/uol/round3/stats.py": {
+   "sha256": "b2020ae36026439a8a0579939355a1a26185f3cc8a4db8bee3d6e95363dd649e",
+   "from": "src/uol/round3/stats.py"
+  },
+  "src/uol/round3/statute_graph.py": {
+   "sha256": "e586a085034b39c1f5d530d474682bfdbd6d1f77de60b96c4edf8ff95b5ece8f",
+   "from": "src/uol/round3/statute_graph.py"
+  },
+  "src/uol/scale_curve/__init__.py": {
+   "sha256": "0c87306e87ada6284fb29498b228bae2a5f5db8840f456bf171b3c4001e0b701",
+   "from": "src/uol/scale_curve/__init__.py"
+  },
+  "src/uol/scale_curve/common.py": {
+   "sha256": "b2ffe4580097a45b0e08b2c94043d96211737c8536946129dbf10d7acae59d78",
+   "from": "src/uol/scale_curve/common.py"
+  },
+  "src/uol/scale_curve/evaluate.py": {
+   "sha256": "8ad5c3d9bfd44ae0b55b511cfddc23baf488aba322b9d87eccbce8b3dc85c734",
+   "from": "src/uol/scale_curve/evaluate.py"
+  },
+  "src/uol/scale_curve/legal.py": {
+   "sha256": "4502378fdc512256af60dcee763507bc17f279d5b6a23871e68980e0c2cc6248",
+   "from": "src/uol/scale_curve/legal.py"
+  },
+  "src/uol/scale_curve/local.py": {
+   "sha256": "691070dfbaab2b727c64da94a8b2466e34bf7651a6ce561e73b1cdb104aa9aba",
+   "from": "src/uol/scale_curve/local.py"
+  },
+  "src/uol/scale_curve/store.py": {
+   "sha256": "772680fba3011a4346dccbae6b030c16b85fd06c9d148d95ac296865e02e8f1f",
+   "from": "src/uol/scale_curve/store.py"
+  },
+  "src/uol/thesis_figures/__init__.py": {
+   "sha256": "7ae7c6e8575d370b990a7638fc3ad99eec63d35de820a938a0f5feb6a43909ac",
+   "from": "src/uol/thesis_figures/__init__.py"
+  },
+  "src/uol/thesis_figures/arms.py": {
+   "sha256": "22b45dd24270b755097c802c442926cdfa17a3630d103a042b8f4016b0c80ba2",
+   "from": "src/uol/thesis_figures/arms.py"
+  },
+  "src/uol/thesis_figures/ch6_d191.py": {
+   "sha256": "2a9bd774fb22f69127b4b0c0f6721c278b78ceaa9800ab6b07060ecb51fa1ae7",
+   "from": "src/uol/thesis_figures/ch6_d191.py"
+  },
+  "src/uol/thesis_figures/ch6_figs.py": {
+   "sha256": "7bbd1f3501d4750226b76644c429f925b4b11f1547c9929a803ef4440f288ac0",
+   "from": "src/uol/thesis_figures/ch6_figs.py",
+   "original_sha256": "fc1d0f973cc4f34146602decbc48ad29bd4b05be99a9b53f90331476665c2dad",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/thesis_figures/ch6_numbers.py": {
+   "sha256": "6e7f0b8207d61e8d38e8d74594b9514725e73e074cf0c4c8abfbf4a334554bbb",
+   "from": "src/uol/thesis_figures/ch6_numbers.py"
+  },
+  "src/uol/thesis_figures/common.py": {
+   "sha256": "0691fc56682e03e50a6dc5166d7b1e73ad47e18b6531682c75048d9be384167e",
+   "from": "src/uol/thesis_figures/common.py",
+   "original_sha256": "cc3b7fdf44f2c4c1aec0513887aa830c35aaaf7682bdc837aa6c22f3f337baa2",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/thesis_figures/d61_figures.py": {
+   "sha256": "f7fc67b5c5359c53a660be7cf6ca1ce759d09063489cf74a97ab835418558232",
+   "from": "src/uol/thesis_figures/d61_figures.py"
+  },
+  "src/uol/thesis_figures/f09_map.py": {
+   "sha256": "eb44b643d63af48a015419c9fb688989be4b9a0b07a22cada235b3287dfcca1d",
+   "from": "src/uol/thesis_figures/f09_map.py"
+  },
+  "src/uol/thesis_figures/f2_4_map.py": {
+   "sha256": "ca7d56cce5a74c30bfcc784d5b5b5c82add22d2da9cee02409f77190180dde07",
+   "from": "src/uol/thesis_figures/f2_4_map.py"
+  },
+  "src/uol/thesis_figures/f3_4_catalogue_map.py": {
+   "sha256": "8722f0ea15657e578c342e684e2c6365c05dc28b01f29d7d297c5c1f9d28687a",
+   "from": "src/uol/thesis_figures/f3_4_catalogue_map.py",
+   "original_sha256": "a32543f35f5c83bf6a854509985f8fb86eb9f42a3530c18fd873c6a1704f14cf",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/thesis_figures/f5_diagrams.py": {
+   "sha256": "ccd3115e102bbd9ff03197865bfb4f74bc478bd24daca4c97b8cd53b46ba45b2",
+   "from": "src/uol/thesis_figures/f5_diagrams.py",
+   "original_sha256": "0c0385399f86d2ccd9ab435bd45ffa10d92ca958659a5eb0e6bbf93c9e524a49",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  },
+  "src/uol/thesis_figures/v21_figs.py": {
+   "sha256": "8b9d166018d769c3151a6fdf5e42fed12e50196f8909839e5ceaa193735677c2",
+   "from": "src/uol/thesis_figures/v21_figs.py",
+   "original_sha256": "801d20617e887610cf77971aff087263da24079e29415ddff87589c681435717",
+   "changed": [
+    "the author's first name in comments replaced by 'the author'"
+   ]
+  }
+ }
+}

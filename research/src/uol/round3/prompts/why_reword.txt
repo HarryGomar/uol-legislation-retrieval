@@ -1,0 +1,6 @@
+Tarea: cada caso trae unos hechos redactados por un tribunal federal mexicano, con algunas referencias normativas ocultas y marcadas como [CITA_OCULTA]. Reescribe los hechos de cada caso con palabras propias y con otro orden de las oraciones, conservando exactamente los mismos hechos, las mismas partes, la misma situación procesal y la misma cuestión jurídica. Conserva cada marca [CITA_OCULTA] tal cual y los nombres de las leyes que el texto ya menciona. No agregues ninguna ley, ningún artículo, ningún dato ni ninguna conclusión que el texto no contenga, no copies frases del original y no escribas números de artículo. Usa una extensión parecida a la del original.
+
+No uses herramientas. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id, y en el campo texto los hechos reescritos.
+
+Casos:
+{items}

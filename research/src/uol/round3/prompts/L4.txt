@@ -1,0 +1,16 @@
+Tarea: redactar hechos sintéticos para artículos de ley.
+
+Recibirás varios artículos de leyes federales mexicanas o de la Constitución, cada uno con un identificador, el nombre de la ley y su texto. También verás ejemplos de cómo redacta un tribunal federal mexicano los "hechos" de un caso (con las referencias normativas ocultas); úsalos solo como modelo de estilo y registro.
+
+Para cada artículo, redacta 4 descripciones de hechos distintas, de 60 a 140 palabras cada una, de casos verosímiles en los que un tribunal federal tendría que aplicar ese artículo para resolver. Cada descripción debe:
+- narrar hechos y actuaciones procesales en el registro de los ejemplos, sin conclusiones ni criterio jurídico;
+- variar entre sí (distintas partes, contextos y etapas procesales);
+- NO mencionar números de artículo, fracción o párrafo, ni el nombre de la ley.
+
+Ejemplos de estilo (hechos de otros casos):
+{examples}
+
+No uses herramientas. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id.
+
+Artículos:
+{items}

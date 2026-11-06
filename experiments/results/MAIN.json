@@ -1,0 +1,30 @@
+{
+ "lexical": {
+  "record": "oct25",
+  "system": "lstar_headings"
+ },
+ "encoder": {
+  "record": "oct25",
+  "system": "qwen3_8b"
+ },
+ "ranker_noenc": {
+  "record": "footing",
+  "system": "rk_noenc"
+ },
+ "ranker": {
+  "record": "footing",
+  "system": "rt_lm_tesis"
+ },
+ "reranked": {
+  "record": "footing",
+  "system": "gpt61sol_rerank_rt_lm_tesis"
+ },
+ "model_alone": {
+  "record": "footing",
+  "system": "gpt61sol_alone"
+ },
+ "system": {
+  "record": "footing",
+  "system": "gpt61sol_rk_system"
+ }
+}

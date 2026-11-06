@@ -1,0 +1,6 @@
+Tarea: cada caso trae los hechos de una tesis publicada en el Semanario Judicial de la Federación, tal como aparecen en ella (con algunas referencias normativas ocultas). Sin ver ningún otro material, indica de qué tesis provienen: su número de registro digital, el año de su publicación, el órgano que la emitió y su rubro tal como fue publicado. Si no conoces un dato, responde null en ese campo en lugar de suponerlo.
+
+No uses herramientas. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id.
+
+Casos:
+{items}

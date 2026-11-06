@@ -1,0 +1,7 @@
+Eres un experto en derecho federal mexicano. Para cada caso de abajo se dan solo los hechos de una tesis, con los nombres de leyes y artículos ocultos.
+
+Para cada caso, escribe el texto de un artículo hipotético de una ley federal mexicana que regularía directamente esos hechos: entre 60 y 120 palabras, en el estilo de un artículo de ley (normativo, impersonal), sin inventar números de artículo, sin nombrar leyes concretas y sin citar tesis ni tribunales.
+
+Responde solo con el JSON pedido: un resultado por caso, con su identificador.
+
+{items}

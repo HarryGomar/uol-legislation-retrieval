@@ -1,0 +1,7191 @@
+{
+ "plan": "research/programs/final_benchmark_20261021/PLAN_DRAFT.md",
+ "release": "v11",
+ "n_systems": 268,
+ "systems": [
+  {
+   "id": "random",
+   "family": "reference",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "none",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "random",
+   "adapter_args": {},
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 2,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "popularity",
+   "family": "reference",
+   "blocks": [
+    "A",
+    "B"
+   ],
+   "inputs": "training labels",
+   "training_data": "outer-fold training components (log1p distinct citing components)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "popularity",
+   "adapter_args": {},
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 2,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "bm25_stem",
+   "family": "lexical",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "masked facts; article body",
+   "training_data": "none (label-free)",
+   "grid": "k1 {.9,1.2,1.5} x b {.4,.75}",
+   "hardware": "cpu",
+   "adapter": "bm25",
+   "adapter_args": {
+    "kind": "bm25_stem"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "lstar",
+   "family": "lexical",
+   "blocks": [
+    "A",
+    "G1"
+   ],
+   "inputs": "masked facts; article body",
+   "training_data": "none (label-free)",
+   "grid": "frozen per-fold L* selection",
+   "hardware": "cpu",
+   "adapter": "lstar",
+   "adapter_args": {
+    "text": "V0"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 10,
+   "threads": 4,
+   "status": "ready",
+   "notes": "recompute of the frozen L_star file (G1 recompute)",
+   "g1": {
+    "expected": 0.18376269351867786,
+    "rounded": ".184",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "lstar_headings",
+   "family": "lexical",
+   "blocks": [
+    "A",
+    "B"
+   ],
+   "inputs": "masked facts; heading path + body (D58)",
+   "training_data": "none (label-free)",
+   "grid": "frozen per-fold L* selection",
+   "hardware": "cpu",
+   "adapter": "lstar",
+   "adapter_args": {
+    "text": "V2"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 10,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "answer": "P1"
+  },
+  {
+   "id": "lstar_frozen",
+   "family": "lexical",
+   "blocks": [
+    "A",
+    "G1"
+   ],
+   "inputs": "frozen score file L_star",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "L_star"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/L_star/scores.npy",
+    "manifest_sha256": "71ddb7e3579382ba773774e4545884a956eae3967d9b8bb0f1c4966dcc6e17e3"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "g1": {
+    "expected": 0.18376269351867786,
+    "rounded": ".184",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "docexp_bm25",
+   "family": "lexical",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen score file docexp_bm25",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "docexp_bm25"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/docexp_bm25/scores.npy",
+    "manifest_sha256": "72765e48d527cfaf4898c764e5fa6fbfd0c7105de23b7c8f73749d98946f55d2"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "lstar_headings_d58",
+   "family": "lexical",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "D58 rebuilt heading-path L* (dev rows)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dev_block",
+   "adapter_args": {
+    "key": "d58_sources",
+    "path": "a/L_star.npy"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "d58_sources",
+    "path": "a/L_star.npy"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "reference for lstar_headings (D58 .1958)"
+  },
+  {
+   "id": "lsa",
+   "family": "topic",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "masked facts; article body",
+   "training_data": "none (label-free)",
+   "grid": [
+    256,
+    512,
+    1024
+   ],
+   "hardware": "cpu",
+   "adapter": "topic",
+   "adapter_args": {
+    "kind": "lsa",
+    "grid": [
+     256,
+     512,
+     1024
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 12,
+   "threads": 8,
+   "status": "ready",
+   "notes": "label-free model fitted on the catalogue; size chosen on inner folds. every fold chose 1,024, the top of the grid; reported as a limit (D78)"
+  },
+  {
+   "id": "lda_sim",
+   "family": "topic",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "masked facts; article body",
+   "training_data": "none (label-free)",
+   "grid": [
+    100,
+    200,
+    400
+   ],
+   "hardware": "cpu",
+   "adapter": "topic",
+   "adapter_args": {
+    "kind": "lda_sim",
+    "grid": [
+     100,
+     200,
+     400
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 12,
+   "threads": 8,
+   "status": "ready",
+   "notes": "label-free model fitted on the catalogue; size chosen on inner folds. CHANGED AFTER THE FREEZE (D78, 22 Oct 2026; CHANGES_AFTER_FREEZE.md): topic mixtures compared after removing the Dirichlet prior mass (expected topic counts). The normalised posterior kept 50 prior pseudo-counts per mixture and biased lda_sim to short articles (.010; long articles never retrieved)"
+  },
+  {
+   "id": "lda_dm",
+   "family": "topic",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "masked facts; article body",
+   "training_data": "none (label-free)",
+   "grid": [
+    100,
+    200,
+    400
+   ],
+   "hardware": "cpu",
+   "adapter": "topic",
+   "adapter_args": {
+    "kind": "lda_dm",
+    "grid": [
+     100,
+     200,
+     400
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 12,
+   "threads": 8,
+   "status": "ready",
+   "notes": "label-free model fitted on the catalogue; size chosen on inner folds"
+  },
+  {
+   "id": "doc2vec",
+   "family": "topic",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "masked facts; article body",
+   "training_data": "none (label-free)",
+   "grid": [
+    100,
+    300
+   ],
+   "hardware": "cpu",
+   "adapter": "topic",
+   "adapter_args": {
+    "kind": "doc2vec",
+    "grid": [
+     100,
+     300
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 12,
+   "threads": 8,
+   "status": "ready",
+   "notes": "label-free model fitted on the catalogue; size chosen on inner folds"
+  },
+  {
+   "id": "word2vec",
+   "family": "topic",
+   "blocks": [
+    "A",
+    "B"
+   ],
+   "inputs": "masked facts; article body",
+   "training_data": "none (label-free)",
+   "grid": [
+    {
+     "size": 100,
+     "window": 5
+    },
+    {
+     "size": 100,
+     "window": 10
+    },
+    {
+     "size": 300,
+     "window": 5
+    },
+    {
+     "size": 300,
+     "window": 10
+    }
+   ],
+   "hardware": "cpu",
+   "adapter": "topic",
+   "adapter_args": {
+    "kind": "word2vec",
+    "grid": [
+     {
+      "size": 100,
+      "window": 5
+     },
+     {
+      "size": 100,
+      "window": 10
+     },
+     {
+      "size": 300,
+      "window": 5
+     },
+     {
+      "size": 300,
+      "window": 10
+     }
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 12,
+   "threads": 8,
+   "status": "ready",
+   "notes": "ADDED AFTER THE FREEZE (D88, 23 Oct 2026; CHANGES_AFTER_FREEZE.md): skip-gram word vectors fitted without labels on the catalogue and the fold's training facts; IDF-weighted mean vectors, cosine; vector size and window chosen on inner folds; no ranker column"
+  },
+  {
+   "id": "e5_small",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "frozen score file dense_e5_maxp",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "dense_e5_maxp"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/dense_e5_maxp/scores.npy",
+    "manifest_sha256": "f6d30119d652790707c998b9cfbd2a43dd30aa5ce3f6a100b092c779bb17a9cf"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "bge_m3",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "frozen score file dense_bge_maxp",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "dense_bge_maxp"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/dense_bge_maxp/scores.npy",
+    "manifest_sha256": "9ca612477214b90e076c657b7143c2fc521f3078763237f9603152299c0172cc"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_8b",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "frozen score file dense_qwen8b",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "dense_qwen8b"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/dense_qwen8b/scores.npy",
+    "manifest_sha256": "151baacbb8ea0b81f47fc340e284778f5edf493e3ace80dfd4e057a73f61e44b"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "g1": {
+    "expected": 0.2741685751276007,
+    "rounded": ".274",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "ft_e5_q",
+   "family": "dense_adapted",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "frozen score file ft_e5_q",
+   "training_data": "citations (query tower)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "ft_e5_q"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/ft_e5_q/scores.npy",
+    "manifest_sha256": "507350e162eac66edcb7c8b1e8c75a5e475838161eaf3a95319926c90623c6a6"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_0p6b",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "cached query and article vectors (MaxP)",
+   "training_data": "none (label-free)",
+   "grid": "query variant (inner folds)",
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "sub": ""
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "qwen3_0p6b",
+    "path": "."
+   },
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_4b",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "cached query and article vectors (MaxP)",
+   "training_data": "none (label-free)",
+   "grid": "query variant (inner folds)",
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "sub": ""
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "qwen3_4b",
+    "path": "."
+   },
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_8b_vectors",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C",
+    "G1"
+   ],
+   "inputs": "cached query and article vectors (MaxP)",
+   "training_data": "none (label-free)",
+   "grid": "query variant (inner folds)",
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "sub": "",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "qwen8b",
+    "path": "."
+   },
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "g1": {
+    "expected": 0.2741685751276007,
+    "rounded": ".274",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "e5_large_legal_en",
+   "family": "dense_legal",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "cached query and article vectors (MaxP)",
+   "training_data": "none (label-free)",
+   "grid": "query variant (inner folds)",
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "e5_large_legal",
+    "sub": ""
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "e5_large_legal",
+    "path": "."
+   },
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_0p6b@qa",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant a in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "sub": "",
+    "variants": [
+     "a"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_0p6b@qb",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant b in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "sub": "",
+    "variants": [
+     "b"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_0p6b@qc",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant c in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "sub": "",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_4b@qa",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant a in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "sub": "",
+    "variants": [
+     "a"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_4b@qb",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant b in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "sub": "",
+    "variants": [
+     "b"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_4b@qc",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant c in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "sub": "",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_8b_vectors@qa",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant a in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "sub": "",
+    "variants": [
+     "a"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_8b_vectors@qb",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant b in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "sub": "",
+    "variants": [
+     "b"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_8b_vectors@qc",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached vectors, query variant c in every fold (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "sub": "",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_8b_vectors@agg_first",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached Qwen3-8B vectors, article score = first of its windows (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "sub": "",
+    "variants": [
+     "c"
+    ],
+    "unit_agg": "first"
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_8b_vectors@agg_mean",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached Qwen3-8B vectors, article score = mean of its windows (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "sub": "",
+    "variants": [
+     "c"
+    ],
+    "unit_agg": "mean"
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_8b_vectors@agg_top2",
+   "family": "dense_general",
+   "blocks": [
+    "C9"
+   ],
+   "inputs": "cached Qwen3-8B vectors, article score = top2 of its windows (C9, D93)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "sub": "",
+    "variants": [
+     "c"
+    ],
+    "unit_agg": "top2"
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): representation check, descriptive"
+  },
+  {
+   "id": "qwen3_8b_headings",
+   "family": "dense_general",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "Qwen3-8B variant c queries vs heading-path article vectors (D58)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dev_block",
+   "adapter_args": {
+    "key": "d58_sources",
+    "path": "b/dense_qwen8b.npy"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "d58_sources",
+    "path": "b/dense_qwen8b.npy"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "e5_base",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "e5_base",
+    "job": "e5_base"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "278M; vectors in <new_vectors>/e5_base after the job"
+  },
+  {
+   "id": "e5_large",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "e5_large",
+    "job": "e5_large"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "560M; vectors in <new_vectors>/e5_large after the job"
+  },
+  {
+   "id": "bge_m3_base",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "bge_m3_base",
+    "job": "bge_m3_base"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "568M; vectors in <new_vectors>/bge_m3_base after the job"
+  },
+  {
+   "id": "alia_mrbert",
+   "family": "dense_legal",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "alia_mrbert",
+    "job": "alia_mrbert"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "~150M; vectors in <new_vectors>/alia_mrbert after the job"
+  },
+  {
+   "id": "gemma_legal",
+   "family": "dense_legal",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "gemma_legal",
+    "job": "gemma_legal"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "300M; vectors in <new_vectors>/gemma_legal after the job"
+  },
+  {
+   "id": "gemma_base",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "gemma_base",
+    "job": "gemma_base"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "300M; vectors in <new_vectors>/gemma_base after the job"
+  },
+  {
+   "id": "bge_m3_legal",
+   "family": "dense_legal",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "bge_m3_legal",
+    "job": "bge_m3_legal"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "568M; vectors in <new_vectors>/bge_m3_legal after the job"
+  },
+  {
+   "id": "euler_legal",
+   "family": "dense_legal",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "euler_legal",
+    "job": "euler_legal"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "8B int8; vectors in <new_vectors>/euler_legal after the job"
+  },
+  {
+   "id": "e5_large_instruct",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "e5_large_instruct",
+    "job": "e5_large_instruct"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "560M; vectors in <new_vectors>/e5_large_instruct after the job"
+  },
+  {
+   "id": "gte_multilingual",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "gte_multilingual",
+    "job": "gte_multilingual"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "305M; vectors in <new_vectors>/gte_multilingual after the job"
+  },
+  {
+   "id": "jina_v3",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "jina_v3",
+    "job": "jina_v3"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "570M; vectors in <new_vectors>/jina_v3 after the job"
+  },
+  {
+   "id": "arctic_l_v2",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "article units + dev query strings (scale-curve units), GPU job",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "arctic_l_v2",
+    "job": "arctic_l_v2"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "568M; vectors in <new_vectors>/arctic_l_v2 after the job"
+  },
+  {
+   "id": "bge_m3_legal_768",
+   "family": "dense_legal",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "bge_m3_legal vectors, first 768 dimensions renormalised",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "bge_m3_legal",
+    "job": "bge_m3_legal",
+    "mrl_dim": 768
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "sensitivity: MatryoshkaLoss(768) of bge_m3_legal; the pair stays comparable at 768"
+  },
+  {
+   "id": "bge_m3_base_768",
+   "family": "dense_general",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "bge_m3_base vectors, first 768 dimensions renormalised",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "bge_m3_base",
+    "job": "bge_m3_base",
+    "mrl_dim": 768
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "sensitivity: MatryoshkaLoss(768) of bge_m3_legal; the pair stays comparable at 768"
+  },
+  {
+   "id": "bge_m3_sparse",
+   "family": "learned_sparse",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "bge-m3 lexical (sparse) weights of units and queries",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "sparse_vectors",
+   "adapter_args": {
+    "key": "bge_m3_sparse",
+    "job": "bge_m3_sparse"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 10,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "bge_m3_colbert",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "B",
+    "C"
+   ],
+   "inputs": "bge-m3 multi-vector (ColBERT) late interaction, every article, uniform MaxSim, MaxP over chunks",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dev_block",
+   "adapter_args": {
+    "key": "new_vectors",
+    "path": "bge_m3_colbert/scores_dev.npy",
+    "job": "colbert_full"
+   },
+   "mode": "gpu_pending",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "added after the freeze (D79); recipe of the frozen colbert_bge source, full catalogue"
+  },
+  {
+   "id": "src_H_bge",
+   "family": "dense_general",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source H_bge (EMB)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "H_bge"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/H_bge/scores.npy",
+    "manifest_sha256": "e470c2fd3d63b3529ad5b1f8e6d4c004f0ab641354368cc74f4fa5c5a9bdd9c2"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_H_qwen8b",
+   "family": "dense_general",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source H_qwen8b (EMB)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "H_qwen8b"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/H_qwen8b/scores.npy",
+    "manifest_sha256": "0522a7f034cbbbc4104e48364e6f5131670d0ec18e782a99884ed82afd3a1df6"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_KH_qwen8b",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source KH_qwen8b (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "KH_qwen8b"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/KH_qwen8b/scores.npy",
+    "manifest_sha256": "e72cecd19baa6f523c0da241aa46d43be82432bd1c6009f34fc854866a179ca9"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_K_lex",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source K_lex (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "K_lex"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/K_lex/scores.npy",
+    "manifest_sha256": "834931979da695bf3416f4ad7a501d18908a4e0a850b8c43afc856f7b59be3cb"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_K_lex_ext",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source K_lex_ext (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "K_lex_ext"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/K_lex_ext/scores.npy",
+    "manifest_sha256": "7dba7232bebbb9930696f642c9b904fdb5503624a0a93e32529bda14e34b5087"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_K_qwen8b",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source K_qwen8b (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "K_qwen8b"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/K_qwen8b/scores.npy",
+    "manifest_sha256": "16fa8e568f1b6b52353d6fc3ce9603ec1e101adfdb95f87c06c68ee7837e0e39"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_LP",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source LP (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "LP"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/LP/scores.npy",
+    "manifest_sha256": "9a612a3559a6c5d424af2ae08f018ffa8b0764a2695dfdaa49aead21af27f6b6"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_dense_bge_firstp",
+   "family": "dense_general",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source dense_bge_firstp (EMB)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "dense_bge_firstp"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/dense_bge_firstp/scores.npy",
+    "manifest_sha256": "d5b4b207946af5e1a7bb60a404617380664c608f05b997d535ccc709b30c46f1"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_dense_bge_long",
+   "family": "dense_general",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source dense_bge_long (EMB)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "dense_bge_long"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/dense_bge_long/scores.npy",
+    "manifest_sha256": "f3900df3c4db49fbdd612b54c46ee2bc3bcbb78bf8864457a9d7bc2c988fddc1"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_docexp_facts_bm25",
+   "family": "lexical",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source docexp_facts_bm25 (NO-EMB)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "docexp_facts_bm25"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/docexp_facts_bm25/scores.npy",
+    "manifest_sha256": "cbce990cbe607e00b995f228b342f3227f355a988ebabecbb3452db4fc80209c"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_adapt_all",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_adapt_all (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_adapt_all"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_adapt_all/scores.npy",
+    "manifest_sha256": "67cda883ef7a3aac6d18073452554e30fd0433525cc2ae49b3c685a969dc1e4f"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_adapt_spec",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_adapt_spec (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_adapt_spec"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_adapt_spec/scores.npy",
+    "manifest_sha256": "d0e16cbb6dde2790b8a6867db75a036cca8b7df67b30cacb76458bae662f8989"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_bge",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_bge (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_bge"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_bge/scores.npy",
+    "manifest_sha256": "bd29177d37657c9a81b1f8bc0893c5427633a8bc61cb5acb624eba11ae3356ea"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_casesim_e5",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_casesim_e5 (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_casesim_e5"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_casesim_e5/scores.npy",
+    "manifest_sha256": "0ebf2d3543577e427ae0540f54c3e1c99e938b02c88c24e7aa7845b9cc3894b7"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_casesim_e5_all",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_casesim_e5_all (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_casesim_e5_all"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_casesim_e5_all/scores.npy",
+    "manifest_sha256": "6e4bbf65027649ca4c6781d161d8fdee4595ac57208222bfd8c6c0103e9f7dd5"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_char_votes",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_char_votes (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_char_votes"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_char_votes/scores.npy",
+    "manifest_sha256": "0952965998410e6a85b4b4011499b14823031853630852e428bf97f803bba55b"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_e5",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_e5 (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_e5"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_e5/scores.npy",
+    "manifest_sha256": "219bc1e6227e83aa86a946b0bac7727a3fcd3812cd596d5db92e17fb99a6cdae"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_fused",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_fused (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_fused"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_fused/scores.npy",
+    "manifest_sha256": "b378e9c644bbf8f60a50ee44d9eb8e38a283853daaeaba4dfbf4ffb74c65ab48"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_fused_qwen8b",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_fused_qwen8b (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_fused_qwen8b"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_fused_qwen8b/scores.npy",
+    "manifest_sha256": "ef4db1b582bfb8b3095c9091cc2c25782b8cf8a5f80800171936871813dfdc36"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lex_instr_votes",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lex_instr_votes (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lex_instr_votes"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lex_instr_votes/scores.npy",
+    "manifest_sha256": "5ac61ad62772049c8c468112cc1cb5f5e8012ef8357363cfc65996785071ef0c"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lex_votes",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lex_votes (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lex_votes"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lex_votes/scores.npy",
+    "manifest_sha256": "3bb1a3b3afbb17b79ffdbc240a7b8ced721a1f1f30cee12b10a69a734848ca81"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lex_votes_k5",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lex_votes_k5 (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lex_votes_k5"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lex_votes_k5/scores.npy",
+    "manifest_sha256": "dbe24be0ce5b383c82bef6165ad85c23a42cce40ec853b2f1b9295a85523d1c5"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lex_votes_k50",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lex_votes_k50 (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lex_votes_k50"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lex_votes_k50/scores.npy",
+    "manifest_sha256": "9ffa96f2cd970547500f386c74b4d628c0c0c913aa13c9533e5953374be96801"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lexc_all",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lexc_all (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lexc_all"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lexc_all/scores.npy",
+    "manifest_sha256": "4de7ec9c4a51adbf4936ea6979c663368d31f14eb648f5cec88bd4c9b4cbaeda"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lexc_spec",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lexc_spec (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lexc_spec"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lexc_spec/scores.npy",
+    "manifest_sha256": "956d491de7a86b8e1b55f09ca450f1fed7db32ee4a1b220fbb9a4fcc3cfc6211"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lsaadapt_all",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lsaadapt_all (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lsaadapt_all"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lsaadapt_all/scores.npy",
+    "manifest_sha256": "9f26b99a60f986c4fc78c1f548e29bc6957232606e0356857002111b10f9b777"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lsaadapt_spec",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lsaadapt_spec (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lsaadapt_spec"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lsaadapt_spec/scores.npy",
+    "manifest_sha256": "922bbfc32fdbc9997fbaddb2203845ded842f5ec304c015645be42f3d5d65214"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lsacadapt_all",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lsacadapt_all (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lsacadapt_all"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lsacadapt_all/scores.npy",
+    "manifest_sha256": "1cd13c3b23e1e48de5e9bb3118d3ff06dd5eb367f5978f991edce2d9c1b51771"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_lsacadapt_spec",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_lsacadapt_spec (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_lsacadapt_spec"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_lsacadapt_spec/scores.npy",
+    "manifest_sha256": "8db9ac74be15f9434d04897b3d937621f174f36d0c79d7db2ffc9b1e2c44ccfa"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_qwen8b",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_qwen8b (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_qwen8b"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_qwen8b/scores.npy",
+    "manifest_sha256": "7c465d44ab12a464dfbb93de4cc58c14f2eab8bdfec2a9ffd8538ed5ee4adb0c"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_x_all",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_x_all (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_x_all"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_x_all/scores.npy",
+    "manifest_sha256": "ef220339693e2d6163fc47faa98363a1c15ce2dfea69711fda7726ba8fce5bf4"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_x_spec",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_x_spec (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_x_spec"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_x_spec/scores.npy",
+    "manifest_sha256": "a89a22d8a177685a75e8c0c40abfc9c488c139c68677fb988d01a3bc53ba78dc"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_xc_all",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_xc_all (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_xc_all"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_xc_all/scores.npy",
+    "manifest_sha256": "c4d84296f276aa6f1a78d43fc46d089b326c0dac5bafd5c1135f3e837bcc521f"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_knn_xc_spec",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source knn_xc_spec (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "knn_xc_spec"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/knn_xc_spec/scores.npy",
+    "manifest_sha256": "adae5caf1de89d0c3e75932dfe9a60e9c979158ef8d8e0bbb83cb24ee1510620"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_prior",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source prior (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "prior"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/prior/scores.npy",
+    "manifest_sha256": "55565465098d4be6ce092c70c916b6c5f91472cfda0388008fa331b65b4746b9"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_adapt",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_adapt (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_adapt"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_adapt/scores.npy",
+    "manifest_sha256": "d6a18b0243b0eab67b61c498b741508904edfd51fb7a7155e4513e19f228722a"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_bge",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_bge (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_bge"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_bge/scores.npy",
+    "manifest_sha256": "c761f18af0413b59a25fcea04449c7f6168e6eef372a81e1a1153192d3f4bbcc"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_casesim_e5",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_casesim_e5 (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_casesim_e5"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_casesim_e5/scores.npy",
+    "manifest_sha256": "10e2c5b8ab31e6346a36596a41303cf2e0d315e607429c3a3822afbaa23146dc"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_e5",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_e5 (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_e5"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_e5/scores.npy",
+    "manifest_sha256": "58cfa68faf5dc28213afe21866bedf9a62ebeaac6318d68d031e9de629d83e58"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_lsaadapt",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_lsaadapt (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_lsaadapt"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_lsaadapt/scores.npy",
+    "manifest_sha256": "5d8f95bee0b1d8944f4742bedf14700c3d9e1a0bfbd1d72a44ac1af072ae0538"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_lsacadapt",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_lsacadapt (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_lsacadapt"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_lsacadapt/scores.npy",
+    "manifest_sha256": "34a58880a2f0f7ff2a0bbbee56a5a6bea811e352d7eafca8b4d779dbf4f73f5a"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_probe",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_probe (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_probe"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_probe/scores.npy",
+    "manifest_sha256": "59e9ceaab9f87343ab4de4173246a75ca8e6ab911f6ebcc3e0a20faafef88068"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_qwen8b",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_qwen8b (EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_qwen8b"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_qwen8b/scores.npy",
+    "manifest_sha256": "f870909320818195eb83512fd9fefd50b158d7c1d271cb3a33ef32e93274d217"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "src_proto_tfidf",
+   "family": "past_cases",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "frozen source proto_tfidf (NO-EMB)",
+   "training_data": "fold-local training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_scores",
+   "adapter_args": {
+    "source": "proto_tfidf"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "scores/proto_tfidf/scores.npy",
+    "manifest_sha256": "f927f1bdf8f9c559ba46dfd406892aedb98b3933bb1e3dbb0e21e2b53986e155"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen embedding_push source; recompute from code is not yet wired (loaded)"
+  },
+  {
+   "id": "rerank_bge",
+   "family": "reranker",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "bge-reranker-v2-m3, zero-shot, S_full_ext top 30, fused with S_full_ext (fusion_route)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "GPU (RTX 5080)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "rerank_bge"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rerank_bge_alone",
+   "family": "reranker",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "bge-reranker-v2-m3, zero-shot, S_full_ext top 30, top 30 reordered by the reranker alone",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "GPU (RTX 5080)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "rerank_bge_alone"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rerank_qwen3_4b",
+   "family": "reranker",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "Qwen3-Reranker-4B, zero-shot, S_full_ext top 30, fused with S_full_ext (fusion_route)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "GPU (RTX 5080)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "rerank_qwen3_4b"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rerank_qwen3_4b_alone",
+   "family": "reranker",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "Qwen3-Reranker-4B, zero-shot, S_full_ext top 30, top 30 reordered by the reranker alone",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "GPU (RTX 5080)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "rerank_qwen3_4b_alone"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "ce_trained_alone",
+   "family": "reranker",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "ce_trained, S_full_ext top 30 reordered by the trained cross-encoder alone",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "GPU (RTX 5080)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "ce_trained_alone"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "llm_alone",
+   "family": "llm",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "closed book, 20 (law, article) names",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "LLM (Codex CLI, gpt-5.6-luna)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "llm_alone"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "llm_rerank_S0",
+   "family": "llm",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "listwise reranking of the S0 top 30 (3 samples x 2 orders)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "LLM (Codex CLI, gpt-5.6-luna)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "llm_rerank_S0"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "answer": "P3+L"
+  },
+  {
+   "id": "llm_rerank_S_full_ext",
+   "family": "llm",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "listwise reranking of the S_full_ext top 30 (3 samples x 2 orders)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "LLM (Codex CLI, gpt-5.6-luna)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "llm_rerank_S_full_ext"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "answer": "P6"
+  },
+  {
+   "id": "ce_trained",
+   "family": "reranker",
+   "blocks": [
+    "E",
+    "E9"
+   ],
+   "inputs": "Qwen3-Reranker-0.6B fine-tuned per fold (round3.r2_cross recipe), S_full_ext top 30",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "GPU (RTX 5080)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "ce_trained"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "answer": "P5+CE"
+  },
+  {
+   "id": "agent_words",
+   "family": "llm",
+   "blocks": [
+    "E",
+    "E12"
+   ],
+   "inputs": "E6 lockstep agent, word-search tool",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "LLM (Codex CLI, gpt-5.6-luna)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "agent_words"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "agent_embedding",
+   "family": "llm",
+   "blocks": [
+    "E",
+    "E12"
+   ],
+   "inputs": "E6 lockstep agent, embedding-search tool (local Qwen3-8B int8 queries)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "LLM (Codex CLI, gpt-5.6-luna)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "agent_embedding"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "llm_rerank_S_full_ext_blank",
+   "family": "llm",
+   "blocks": [
+    "C5"
+   ],
+   "inputs": "listwise reranking of the S_full_ext top 30 without article text (1 sample x 2 orders)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "LLM (Codex CLI, gpt-5.6-luna)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "llm_rerank_S_full_ext_blank"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): does the LLM stage read the text or know the article number"
+  },
+  {
+   "id": "claude_rerank_S_full_ext",
+   "family": "llm",
+   "blocks": [
+    "C10"
+   ],
+   "inputs": "Claude Opus 5.5 listwise rerank, the main prompt and windows, 1 sample, fused per fold like P6",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "external API (thesis PC)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "claude_rerank_S_full_ext"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D101): an F6 second-stage alternative, DEV-A300 and NEW"
+  },
+  {
+   "id": "jev_S_full_ext",
+   "family": "llm",
+   "blocks": [
+    "C10"
+   ],
+   "inputs": "Jev decision model, pointwise yes-probability, order of the top 30",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "external API (thesis PC)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "jev_S_full_ext"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D101): an F6 second-stage alternative, DEV-A300 and NEW"
+  },
+  {
+   "id": "jev_rrf_S_full_ext",
+   "family": "llm",
+   "blocks": [
+    "C10"
+   ],
+   "inputs": "Jev order fused with S_full_ext by reciprocal rank (k 60)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "external API (thesis PC)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "jev_rrf_S_full_ext"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D101): an F6 second-stage alternative, DEV-A300 and NEW"
+  },
+  {
+   "id": "sonnet_rerank_S_full_ext",
+   "family": "llm",
+   "blocks": [
+    "C10"
+   ],
+   "inputs": "Claude Sonnet 5.5 listwise rerank, the main prompt and windows, 1 sample, fused per fold like P6",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "external API (thesis PC)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "sonnet_rerank_S_full_ext"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D174), exploratory, DEV-A300 only"
+  },
+  {
+   "id": "haiku_rerank_S_full_ext",
+   "family": "llm",
+   "blocks": [
+    "C10"
+   ],
+   "inputs": "Claude Haiku 5.5 listwise rerank, the main prompt and windows, 1 sample, fused per fold like P6",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "external API (thesis PC)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "haiku_rerank_S_full_ext"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D174), exploratory, DEV-A300 only"
+  },
+  {
+   "id": "gpt6sol_rerank_S_full_ext",
+   "family": "llm",
+   "blocks": [
+    "C10"
+   ],
+   "inputs": "GPT-6 Sol listwise rerank, the main prompt and windows, 1 sample, fused per fold like P6",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "LLM (Codex CLI, gpt-6-sol; thesis PC)",
+   "adapter": "llm_matrix",
+   "adapter_args": {
+    "key": "gpt6sol_rerank_S_full_ext"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D174), exploratory, DEV-A300 only"
+  },
+  {
+   "id": "llm_issues",
+   "family": "llm",
+   "blocks": [
+    "E"
+   ],
+   "inputs": "saved L2 issue decompositions",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "not_wired",
+   "adapter_args": {
+    "reason": "the issue decompositions (L2, every dev row) are an input of query2doc, not a ranking"
+   },
+   "mode": "loaded",
+   "artefact": null,
+   "peak_ram_gb": 6,
+   "threads": 4,
+   "status": "stub",
+   "notes": ""
+  },
+  {
+   "id": "qwen8b_adapter",
+   "family": "dense_adapted",
+   "blocks": [
+    "A",
+    "E2"
+   ],
+   "inputs": "frozen Qwen3-8B vectors; E2 low-rank adapter per outer fold",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "qwen_adapter",
+   "adapter_args": {
+    "table": "dev"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 18,
+   "threads": 8,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "bge_m3_ft",
+   "family": "dense_adapted",
+   "blocks": [
+    "A",
+    "E2"
+   ],
+   "inputs": "",
+   "training_data": "outer-fold training labels (hard negatives from frozen bge-m3 top 50)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080), one model per fold",
+   "adapter": "fold_dense",
+   "adapter_args": {
+    "key": "bge_m3_ft"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_0p6b_ft",
+   "family": "dense_adapted",
+   "blocks": [
+    "A",
+    "E2"
+   ],
+   "inputs": "",
+   "training_data": "outer-fold training labels (hard negatives from the frozen qwen3_0p6b top 50)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080), one model per fold",
+   "adapter": "fold_dense",
+   "adapter_args": {
+    "key": "qwen3_0p6b_ft"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": "ADDED AFTER THE FREEZE (D89, 23 Oct 2026; CHANGES_AFTER_FREEZE.md): Qwen3-Embedding-0.6B fully fine-tuned per outer fold with the bge_m3_ft recipe; queries in the instruction variant the base qwen3_0p6b chose on that fold's inner folds; catalogue re-encoded in the base's title-led windows; no ranker column"
+  },
+  {
+   "id": "query2doc",
+   "family": "query_expansion",
+   "blocks": [
+    "A",
+    "E8"
+   ],
+   "inputs": "facts + saved L2 issues, Qwen3-8B int8, variant c",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "query2doc"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "hyde",
+   "family": "query_expansion",
+   "blocks": [
+    "A",
+    "E8"
+   ],
+   "inputs": "hypothetical article written by the LLM, Qwen3-8B int8 document side",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "hyde"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_8b_int8q",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "E8"
+   ],
+   "inputs": "Qwen3-8B int8 query vectors (fidelity check against the cached ones)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen_int8_dev"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_8b_int8_base",
+   "family": "dense_general",
+   "blocks": [
+    "A",
+    "E2"
+   ],
+   "inputs": "Qwen3-Embedding-8B re-encoded in int8 through the Euler code path (articles and dev queries): the same-path base of euler_legal",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_8b_int8path"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 10,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "e5_small_re",
+   "family": "dense_general",
+   "blocks": [
+    "A"
+   ],
+   "inputs": "multilingual-e5-small re-encoded on the 5080 (both sides; DEV-N uses it with re-encoded queries)",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "gpu (RTX 5080)",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "e5_small_re"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 6,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "qwen3_0p6b_mrl256",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_0p6b saved vectors, 256 dims, fp32",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "mrl_dim": 256,
+    "quant": null
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 1.000 KB per vector"
+  },
+  {
+   "id": "qwen3_0p6b_mrl256_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_0p6b saved vectors, 256 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "mrl_dim": 256,
+    "quant": "int8"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.250 KB per vector"
+  },
+  {
+   "id": "qwen3_0p6b_mrl256_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_0p6b saved vectors, 256 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "mrl_dim": 256,
+    "quant": "binary"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.031 KB per vector"
+  },
+  {
+   "id": "qwen3_0p6b_mrl512",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_0p6b saved vectors, 512 dims, fp32",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "mrl_dim": 512,
+    "quant": null
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 2.000 KB per vector"
+  },
+  {
+   "id": "qwen3_0p6b_mrl512_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_0p6b saved vectors, 512 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "mrl_dim": 512,
+    "quant": "int8"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.500 KB per vector"
+  },
+  {
+   "id": "qwen3_0p6b_mrl512_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_0p6b saved vectors, 512 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "mrl_dim": 512,
+    "quant": "binary"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.062 KB per vector"
+  },
+  {
+   "id": "qwen3_0p6b_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_0p6b saved vectors, 1024 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "mrl_dim": null,
+    "quant": "int8"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 1.000 KB per vector"
+  },
+  {
+   "id": "qwen3_0p6b_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_0p6b saved vectors, 1024 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_0p6b",
+    "mrl_dim": null,
+    "quant": "binary"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.125 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl256",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 256 dims, fp32",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 256,
+    "quant": null
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 1.000 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl256_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 256 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 256,
+    "quant": "int8"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.250 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl256_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 256 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 256,
+    "quant": "binary"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.031 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl512",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 512 dims, fp32",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 512,
+    "quant": null
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 2.000 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl512_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 512 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 512,
+    "quant": "int8"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.500 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl512_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 512 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 512,
+    "quant": "binary"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.062 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl1024",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 1024 dims, fp32",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 1024,
+    "quant": null
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 4.000 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl1024_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 1024 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 1024,
+    "quant": "int8"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 1.000 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_mrl1024_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 1024 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": 1024,
+    "quant": "binary"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.125 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 2560 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": null,
+    "quant": "int8"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 2.500 KB per vector"
+  },
+  {
+   "id": "qwen3_4b_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_4b saved vectors, 2560 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen3_4b",
+    "mrl_dim": null,
+    "quant": "binary"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.312 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl256",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 256 dims, fp32",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 256,
+    "quant": null,
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 1.000 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl256_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 256 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 256,
+    "quant": "int8",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.250 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl256_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 256 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 256,
+    "quant": "binary",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.031 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl512",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 512 dims, fp32",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 512,
+    "quant": null,
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 2.000 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl512_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 512 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 512,
+    "quant": "int8",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.500 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl512_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 512 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 512,
+    "quant": "binary",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.062 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl1024",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 1024 dims, fp32",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 1024,
+    "quant": null,
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 4.000 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl1024_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 1024 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 1024,
+    "quant": "int8",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 1.000 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_mrl1024_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 1024 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": 1024,
+    "quant": "binary",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.125 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_int8",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 4096 dims, int8",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": null,
+    "quant": "int8",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 4.000 KB per vector"
+  },
+  {
+   "id": "qwen3_8b_binary",
+   "family": "dense_compressed",
+   "blocks": [
+    "A",
+    "E3"
+   ],
+   "inputs": "qwen3_8b saved vectors, 4096 dims, binary",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "dense_vectors",
+   "adapter_args": {
+    "key": "qwen8b",
+    "mrl_dim": null,
+    "quant": "binary",
+    "variants": [
+     "c"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 8,
+   "threads": 4,
+   "status": "ready",
+   "notes": "index size 0.500 KB per vector"
+  },
+  {
+   "id": "c_hybrid_cached",
+   "family": "llm",
+   "blocks": [
+    "E",
+    "G1"
+   ],
+   "inputs": "frozen C_hybrid stage-2 matrix + 3 cached listwise orders",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu (cached LLM)",
+   "adapter": "c_hybrid_cached",
+   "adapter_args": {},
+   "mode": "loaded",
+   "artefact": {
+    "key": "c_hybrid",
+    "path": "."
+   },
+   "peak_ram_gb": 12,
+   "threads": 4,
+   "status": "ready",
+   "notes": "frozen LLM-stage hybrid (DEV only)",
+   "g1": {
+    "expected": 0.5557884848974133,
+    "rounded": ".5558",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "ltr_noemb_frozen",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "D",
+    "G1"
+   ],
+   "inputs": "frozen pipeline LTR_noemb_hgb",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_pipeline",
+   "adapter_args": {
+    "pipeline": "LTR_noemb_hgb"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "fusion/pipelines/LTR_noemb_hgb/scores.npy",
+    "manifest_sha256": "8f398d3220e9fd27f12ff7d63eb842fefff003eddd64aa51dbed6a72a7ebef42"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "g1": {
+    "expected": 0.4081358955959893,
+    "rounded": ".4081",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "ltr_noemb_refit",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "D",
+    "G1"
+   ],
+   "inputs": "NO-EMB frozen sources, development pair table",
+   "training_data": "outer-fold training labels (frozen hyper-parameters, seeds)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 18,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "g1": {
+    "expected": 0.4081358955959893,
+    "rounded": ".4081",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "ltr_noemb_linear",
+   "family": "ranker",
+   "blocks": [
+    "D"
+   ],
+   "inputs": "NO-EMB frozen sources, development pair table",
+   "training_data": "outer-fold training labels (frozen hyper-parameters, seeds)",
+   "grid": "coordinate ascent on the training folds",
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "method": "linear"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 18,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "ltr_noemb_lambdamart",
+   "family": "ranker",
+   "blocks": [
+    "D"
+   ],
+   "inputs": "NO-EMB frozen sources, development pair table",
+   "training_data": "outer-fold training labels (frozen hyper-parameters, seeds)",
+   "grid": "lr {.05,.1} x leaves {15,63} (D57 test 6)",
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "method": "lambdamart"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 18,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf_all_noemb",
+   "family": "fusion",
+   "blocks": [
+    "D"
+   ],
+   "inputs": "every NO-EMB frozen full source, RRF k=60",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_frozen",
+     "docexp_bm25",
+     "src_docexp_facts_bm25",
+     "src_knn_char_votes",
+     "src_knn_lex_instr_votes",
+     "src_knn_lex_votes",
+     "src_knn_lex_votes_k5",
+     "src_knn_lex_votes_k50",
+     "src_knn_lexc_all",
+     "src_knn_lexc_spec",
+     "src_knn_lsaadapt_all",
+     "src_knn_lsaadapt_spec",
+     "src_knn_lsacadapt_all",
+     "src_knn_lsacadapt_spec",
+     "src_prior",
+     "src_proto_lsaadapt",
+     "src_proto_lsacadapt",
+     "src_proto_tfidf"
+    ]
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "ltr_emb_frozen",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "D",
+    "G1"
+   ],
+   "inputs": "frozen pipeline LTR_emb_hgb",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "frozen_pipeline",
+   "adapter_args": {
+    "pipeline": "LTR_emb_hgb"
+   },
+   "mode": "loaded",
+   "artefact": {
+    "key": "ep_run",
+    "path": "fusion/pipelines/LTR_emb_hgb/scores.npy",
+    "manifest_sha256": "2bbdd208c4562be476b15ab58f0f478b73e033198c4166f69f30bcedf33282e0"
+   },
+   "peak_ram_gb": 3,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "g1": {
+    "expected": 0.4721007254624054,
+    "rounded": ".4721",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "ltr_emb_refit",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "D",
+    "G1"
+   ],
+   "inputs": "all frozen sources, development pair table",
+   "training_data": "outer-fold training labels (frozen hyper-parameters, seeds)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 18,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "g1": {
+    "expected": 0.4721007254624054,
+    "rounded": ".4721",
+    "population": "DEV",
+    "measure": "ndcg_at_10"
+   }
+  },
+  {
+   "id": "ltr_emb_linear",
+   "family": "ranker",
+   "blocks": [
+    "D"
+   ],
+   "inputs": "all frozen sources, development pair table",
+   "training_data": "outer-fold training labels (frozen hyper-parameters, seeds)",
+   "grid": "coordinate ascent on the training folds",
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "method": "linear"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 18,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "ltr_emb_lambdamart",
+   "family": "ranker",
+   "blocks": [
+    "D"
+   ],
+   "inputs": "all frozen sources, development pair table",
+   "training_data": "outer-fold training labels (frozen hyper-parameters, seeds)",
+   "grid": "lr {.05,.1} x leaves {15,63} (D57 test 6)",
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "method": "lambdamart"
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 18,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf_all_emb",
+   "family": "fusion",
+   "blocks": [
+    "D"
+   ],
+   "inputs": "every  frozen full source, RRF k=60",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "src_KH_qwen8b",
+     "lstar_frozen",
+     "src_dense_bge_firstp",
+     "src_dense_bge_long",
+     "bge_m3",
+     "e5_small",
+     "qwen3_8b",
+     "docexp_bm25",
+     "src_docexp_facts_bm25",
+     "ft_e5_q",
+     "src_knn_adapt_all",
+     "src_knn_adapt_spec",
+     "src_knn_bge",
+     "src_knn_casesim_e5",
+     "src_knn_casesim_e5_all",
+     "src_knn_char_votes",
+     "src_knn_e5",
+     "src_knn_fused",
+     "src_knn_fused_qwen8b",
+     "src_knn_lex_instr_votes",
+     "src_knn_lex_votes",
+     "src_knn_lex_votes_k5",
+     "src_knn_lex_votes_k50",
+     "src_knn_lexc_all",
+     "src_knn_lexc_spec",
+     "src_knn_lsaadapt_all",
+     "src_knn_lsaadapt_spec",
+     "src_knn_lsacadapt_all",
+     "src_knn_lsacadapt_spec",
+     "src_knn_qwen8b",
+     "src_knn_x_all",
+     "src_knn_x_spec",
+     "src_knn_xc_all",
+     "src_knn_xc_spec",
+     "src_prior",
+     "src_proto_adapt",
+     "src_proto_bge",
+     "src_proto_casesim_e5",
+     "src_proto_e5",
+     "src_proto_lsaadapt",
+     "src_proto_lsacadapt",
+     "src_proto_probe",
+     "src_proto_qwen8b",
+     "src_proto_tfidf"
+    ]
+   },
+   "mode": "rebuilt",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S0",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "D"
+   ],
+   "inputs": "NO-EMB frozen sources + topic columns (lexical + topic + past cases)",
+   "training_data": "outer-fold training labels (frozen hyper-parameters, seeds)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "answer": "P3"
+  },
+  {
+   "id": "S0+e5_small",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + the frozen sources of e5_small (dense_e5_maxp, knn_e5, proto_e5)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "add_sources": [
+     "dense_e5_maxp",
+     "knn_e5",
+     "proto_e5"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "extra row (D78): the encoder with its past-case sources; F2 uses S0+e5_small_dense",
+   "ladder_definition": "with_sources"
+  },
+  {
+   "id": "S0+e5_small_dense",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of e5_small (robust z, log rank, instrument-max z) from dense_e5_maxp",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "e5_small"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+bge_m3",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + the frozen sources of bge_m3 (dense_bge_maxp, dense_bge_firstp, dense_bge_long, H_bge, knn_bge, proto_bge, colbert_bge)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "add_sources": [
+     "dense_bge_maxp",
+     "dense_bge_firstp",
+     "dense_bge_long",
+     "H_bge",
+     "knn_bge",
+     "proto_bge",
+     "colbert_bge"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "extra row (D78): the encoder with its past-case sources; F2 uses S0+bge_m3_dense",
+   "ladder_definition": "with_sources"
+  },
+  {
+   "id": "S0+bge_m3_dense",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of bge_m3 (robust z, log rank, instrument-max z) from dense_bge_maxp",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "bge_m3"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+bge_m3_colbert",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of bge_m3_colbert (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "bge_m3_colbert"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+qwen3_0p6b",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of qwen3_0p6b (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "qwen3_0p6b"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+qwen3_4b",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of qwen3_4b (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "qwen3_4b"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "answer": "P4",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+qwen3_8b",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + the frozen sources of qwen3_8b (dense_qwen8b, H_qwen8b, KH_qwen8b, K_qwen8b, knn_qwen8b, knn_fused_qwen8b, proto_qwen8b)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "add_sources": [
+     "dense_qwen8b",
+     "H_qwen8b",
+     "KH_qwen8b",
+     "K_qwen8b",
+     "knn_qwen8b",
+     "knn_fused_qwen8b",
+     "proto_qwen8b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "extra row (D78): the encoder with its past-case sources; F2 uses S0+qwen3_8b_dense",
+   "ladder_definition": "with_sources"
+  },
+  {
+   "id": "S0+qwen3_8b_dense",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of qwen3_8b (robust z, log rank, instrument-max z) from dense_qwen8b",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "qwen3_8b"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+e5_base",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of e5_base (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "e5_base"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+e5_large",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of e5_large (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "e5_large"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+bge_m3_base",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of bge_m3_base (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "bge_m3_base"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+bge_m3_sparse",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of bge_m3_sparse (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "bge_m3_sparse"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+alia_mrbert",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of alia_mrbert (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "alia_mrbert"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+gemma_legal",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of gemma_legal (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "gemma_legal"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+gemma_base",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of gemma_base (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "gemma_base"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+bge_m3_legal",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of bge_m3_legal (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "bge_m3_legal"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+euler_legal",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of euler_legal (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "euler_legal"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+e5_large_legal_en",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of e5_large_legal_en (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "e5_large_legal_en"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+ft_e5_q",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + the frozen sources of ft_e5_q (ft_e5_q, knn_adapt_all, knn_adapt_spec, proto_adapt, knn_casesim_e5, knn_casesim_e5_all, proto_casesim_e5)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "add_sources": [
+     "ft_e5_q",
+     "knn_adapt_all",
+     "knn_adapt_spec",
+     "proto_adapt",
+     "knn_casesim_e5",
+     "knn_casesim_e5_all",
+     "proto_casesim_e5"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "extra row (D78): the encoder with its past-case sources; F2 uses S0+ft_e5_q_dense",
+   "ladder_definition": "with_sources"
+  },
+  {
+   "id": "S0+ft_e5_q_dense",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + the ft_e5_q dense source of the pair table only (no past-case sources; nesting rule)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "add_sources": [
+     "ft_e5_q"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+e5_large_instruct",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of e5_large_instruct (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "e5_large_instruct"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+gte_multilingual",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of gte_multilingual (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "gte_multilingual"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+jina_v3",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of jina_v3 (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "jina_v3"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+arctic_l_v2",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of arctic_l_v2 (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "arctic_l_v2"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+query2doc",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of query2doc (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "query2doc"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+hyde",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of hyde (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "hyde"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+qwen3_8b_mrl256",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of qwen3_8b_mrl256 (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "qwen3_8b_mrl256"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+qwen3_8b_mrl512",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of qwen3_8b_mrl512 (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "qwen3_8b_mrl512"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+qwen3_8b_mrl1024",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of qwen3_8b_mrl1024 (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "qwen3_8b_mrl1024"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+qwen3_8b_int8",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of qwen3_8b_int8 (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "qwen3_8b_int8"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S0+qwen3_8b_binary",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E5"
+   ],
+   "inputs": "S0 + three columns of qwen3_8b_binary (robust z, log rank, instrument-max z)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "qwen3_8b_binary"
+    ],
+    "add_sources": []
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 20,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "ladder_definition": "dense_only"
+  },
+  {
+   "id": "S_full",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "D"
+   ],
+   "inputs": "all frozen sources + topic columns",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S_full_ext",
+   "family": "ranker",
+   "blocks": [
+    "C"
+   ],
+   "inputs": "S_full + M1 historical citation memory",
+   "training_data": "outer-fold training labels; historical pool before 2020-08-14",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "extension": "m1"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 24,
+   "threads": 4,
+   "status": "ready",
+   "notes": "",
+   "answer": "P5"
+  },
+  {
+   "id": "S_full_ext_minus_colbert",
+   "family": "ranker",
+   "blocks": [
+    "C"
+   ],
+   "inputs": "S_full_ext without the colbert_bge features (leave-one-out, D79)",
+   "training_data": "outer-fold training labels; historical pool before 2020-08-14",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "extension": "m1",
+    "drop_sources": [
+     "colbert_bge"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 24,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D79): the contribution of late interaction inside the full ranker"
+  },
+  {
+   "id": "S_full_minus_D",
+   "family": "ranker",
+   "blocks": [
+    "C2"
+   ],
+   "inputs": "S_full without 10 embedding sources (C2, D93)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "drop_sources": [
+     "dense_bge_firstp",
+     "dense_bge_long",
+     "dense_bge_maxp",
+     "dense_e5_maxp",
+     "dense_qwen8b",
+     "ft_e5_q",
+     "colbert_bge",
+     "H_bge",
+     "H_qwen8b",
+     "KH_qwen8b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 24,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): sources: dense_bge_firstp, dense_bge_long, dense_bge_maxp, dense_e5_maxp, dense_qwen8b, ft_e5_q, colbert_bge, H_bge, H_qwen8b, KH_qwen8b"
+  },
+  {
+   "id": "S_full_minus_M",
+   "family": "ranker",
+   "blocks": [
+    "C2"
+   ],
+   "inputs": "S_full without 23 embedding sources (C2, D93)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "drop_sources": [
+     "K_qwen8b",
+     "knn_adapt_all",
+     "knn_adapt_spec",
+     "knn_bge",
+     "knn_casesim_e5",
+     "knn_casesim_e5_all",
+     "knn_e5",
+     "knn_fused",
+     "knn_fused_qwen8b",
+     "knn_qwen8b",
+     "knn_x_all",
+     "knn_x_spec",
+     "knn_xc_all",
+     "knn_xc_spec",
+     "proto_adapt",
+     "proto_bge",
+     "proto_casesim_e5",
+     "proto_e5",
+     "proto_probe",
+     "proto_qwen8b",
+     "H_bge",
+     "H_qwen8b",
+     "KH_qwen8b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 24,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): sources: K_qwen8b, knn_adapt_all, knn_adapt_spec, knn_bge, knn_casesim_e5, knn_casesim_e5_all, knn_e5, knn_fused, knn_fused_qwen8b, knn_qwen8b, knn_x_all, knn_x_spec, knn_xc_all, knn_xc_spec, proto_adapt, proto_bge, proto_casesim_e5, proto_e5, proto_probe, proto_qwen8b, H_bge, H_qwen8b, KH_qwen8b"
+  },
+  {
+   "id": "S_full_ext_minus_qwen3_8b",
+   "family": "ranker",
+   "blocks": [
+    "C2"
+   ],
+   "inputs": "S_full_ext without 7 embedding sources (C2, D93)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "extension": "m1",
+    "drop_sources": [
+     "dense_qwen8b",
+     "H_qwen8b",
+     "KH_qwen8b",
+     "K_qwen8b",
+     "knn_qwen8b",
+     "knn_fused_qwen8b",
+     "proto_qwen8b"
+    ],
+    "extension_key": "lex"
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 24,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): the extension uses its lex key; sources: dense_qwen8b, H_qwen8b, KH_qwen8b, K_qwen8b, knn_qwen8b, knn_fused_qwen8b, proto_qwen8b"
+  },
+  {
+   "id": "S_full_ext_minus_bge_m3",
+   "family": "ranker",
+   "blocks": [
+    "C2"
+   ],
+   "inputs": "S_full_ext without 19 embedding sources (C2, D93)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "extension": "m1",
+    "drop_sources": [
+     "dense_bge_firstp",
+     "dense_bge_long",
+     "dense_bge_maxp",
+     "colbert_bge",
+     "H_bge",
+     "knn_bge",
+     "proto_bge",
+     "knn_adapt_all",
+     "knn_adapt_spec",
+     "knn_casesim_e5",
+     "knn_casesim_e5_all",
+     "knn_fused",
+     "knn_x_all",
+     "knn_x_spec",
+     "knn_xc_all",
+     "knn_xc_spec",
+     "proto_adapt",
+     "proto_casesim_e5",
+     "proto_probe"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 24,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): sources: dense_bge_firstp, dense_bge_long, dense_bge_maxp, colbert_bge, H_bge, knn_bge, proto_bge, knn_adapt_all, knn_adapt_spec, knn_casesim_e5, knn_casesim_e5_all, knn_fused, knn_x_all, knn_x_spec, knn_xc_all, knn_xc_spec, proto_adapt, proto_casesim_e5, proto_probe"
+  },
+  {
+   "id": "S_full_ext_minus_e5",
+   "family": "ranker",
+   "blocks": [
+    "C2"
+   ],
+   "inputs": "S_full_ext without 16 embedding sources (C2, D93)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "extension": "m1",
+    "drop_sources": [
+     "dense_e5_maxp",
+     "ft_e5_q",
+     "knn_e5",
+     "proto_e5",
+     "knn_adapt_all",
+     "knn_adapt_spec",
+     "knn_casesim_e5",
+     "knn_casesim_e5_all",
+     "knn_fused",
+     "knn_x_all",
+     "knn_x_spec",
+     "knn_xc_all",
+     "knn_xc_spec",
+     "proto_adapt",
+     "proto_casesim_e5",
+     "proto_probe"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 24,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): sources: dense_e5_maxp, ft_e5_q, knn_e5, proto_e5, knn_adapt_all, knn_adapt_spec, knn_casesim_e5, knn_casesim_e5_all, knn_fused, knn_x_all, knn_x_spec, knn_xc_all, knn_xc_spec, proto_adapt, proto_casesim_e5, proto_probe"
+  },
+  {
+   "id": "S_full_ext_importance",
+   "family": "ranker",
+   "blocks": [
+    "C2"
+   ],
+   "inputs": "S_full_ext refit, then grouped permutation importance per held-out case (C2, D93)",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "extension": "m1",
+    "importance": {
+     "repeats": 20,
+     "seed": 20261023
+    }
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 28,
+   "threads": 4,
+   "status": "ready",
+   "notes": "added after the freeze (D93): its ranking equals S_full_ext; the receipt holds the losses"
+  },
+  {
+   "id": "S_full+query2doc",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E8"
+   ],
+   "inputs": "S_full + three columns of query2doc",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "query2doc"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S_full+hyde",
+   "family": "ranker",
+   "blocks": [
+    "C",
+    "E8"
+   ],
+   "inputs": "S_full + three columns of hyde",
+   "training_data": "outer-fold training labels",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec",
+     "hyde"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S0_seed1",
+   "family": "ranker",
+   "blocks": [
+    "G"
+   ],
+   "inputs": "S0, tree seed +1",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "seed_offset": 1
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S_full_seed1",
+   "family": "ranker",
+   "blocks": [
+    "G"
+   ],
+   "inputs": "S_full, tree seed +1",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "seed_offset": 1
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S_full_ext_seed1",
+   "family": "ranker",
+   "blocks": [
+    "G"
+   ],
+   "inputs": "S_full_ext, tree seed +1",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "extension": "m1",
+    "seed_offset": 1
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S0_seed2",
+   "family": "ranker",
+   "blocks": [
+    "G"
+   ],
+   "inputs": "S0, tree seed +2",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "noemb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "seed_offset": 2
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S_full_seed2",
+   "family": "ranker",
+   "blocks": [
+    "G"
+   ],
+   "inputs": "S_full, tree seed +2",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "seed_offset": 2
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "S_full_ext_seed2",
+   "family": "ranker",
+   "blocks": [
+    "G"
+   ],
+   "inputs": "S_full_ext, tree seed +2",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "ltr",
+   "adapter_args": {
+    "variant": "emb",
+    "table": "dev",
+    "extra": [
+     "lsa",
+     "lda_sim",
+     "lda_dm",
+     "doc2vec"
+    ],
+    "extension": "m1",
+    "seed_offset": 2
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 22,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__popularity",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + popularity",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "popularity"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__popularity",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + popularity",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "popularity"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__lsa",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + lsa",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "lsa"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__lsa",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + lsa",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "lsa"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__lda_sim",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + lda_sim",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "lda_sim"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__lda_sim",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + lda_sim",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "lda_sim"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__lda_dm",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + lda_dm",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "lda_dm"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__lda_dm",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + lda_dm",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "lda_dm"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__doc2vec",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + doc2vec",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "doc2vec"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__doc2vec",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + doc2vec",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "doc2vec"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__word2vec",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + word2vec",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "word2vec"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__word2vec",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + word2vec",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "word2vec"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__e5_small",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_small",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "e5_small"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__e5_small",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_small",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "e5_small"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__bge_m3",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + bge_m3",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "bge_m3"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__bge_m3",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + bge_m3",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "bge_m3"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__bge_m3_colbert",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + bge_m3_colbert",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "bge_m3_colbert"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__bge_m3_colbert",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + bge_m3_colbert",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "bge_m3_colbert"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__qwen3_0p6b",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + qwen3_0p6b",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "qwen3_0p6b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__qwen3_0p6b",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + qwen3_0p6b",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "qwen3_0p6b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__qwen3_4b",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + qwen3_4b",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "qwen3_4b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__qwen3_4b",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + qwen3_4b",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "qwen3_4b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__qwen3_8b",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + qwen3_8b",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "qwen3_8b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__qwen3_8b",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + qwen3_8b",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "qwen3_8b"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__e5_base",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_base",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "e5_base"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__e5_base",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_base",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "e5_base"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__e5_large",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_large",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "e5_large"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__e5_large",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_large",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "e5_large"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__bge_m3_sparse",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + bge_m3_sparse",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "bge_m3_sparse"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__bge_m3_sparse",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + bge_m3_sparse",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "bge_m3_sparse"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__alia_mrbert",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + alia_mrbert",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "alia_mrbert"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__alia_mrbert",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + alia_mrbert",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "alia_mrbert"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__gemma_legal",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + gemma_legal",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "gemma_legal"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__gemma_legal",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + gemma_legal",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "gemma_legal"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__bge_m3_legal",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + bge_m3_legal",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "bge_m3_legal"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__bge_m3_legal",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + bge_m3_legal",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "bge_m3_legal"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__euler_legal",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + euler_legal",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "euler_legal"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__euler_legal",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + euler_legal",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "euler_legal"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__e5_large_legal_en",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_large_legal_en",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "e5_large_legal_en"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__e5_large_legal_en",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_large_legal_en",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "e5_large_legal_en"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__ft_e5_q",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + ft_e5_q",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "ft_e5_q"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__ft_e5_q",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + ft_e5_q",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "ft_e5_q"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__e5_large_instruct",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_large_instruct",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "e5_large_instruct"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__e5_large_instruct",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + e5_large_instruct",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "e5_large_instruct"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__gte_multilingual",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + gte_multilingual",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "gte_multilingual"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__gte_multilingual",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + gte_multilingual",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "gte_multilingual"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__jina_v3",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + jina_v3",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "jina_v3"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__jina_v3",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + jina_v3",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "jina_v3"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__arctic_l_v2",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + arctic_l_v2",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "arctic_l_v2"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__arctic_l_v2",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + arctic_l_v2",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "arctic_l_v2"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "pending_vectors",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__query2doc",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + query2doc",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "query2doc"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__query2doc",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + query2doc",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "query2doc"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__hyde",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + hyde",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "hyde"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__hyde",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + hyde",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "hyde"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "rrf__lstar_headings__qwen3_0p6b_ft",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + qwen3_0p6b_ft",
+   "training_data": "none (label-free)",
+   "grid": null,
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "rrf",
+    "members": [
+     "lstar_headings",
+     "qwen3_0p6b_ft"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  },
+  {
+   "id": "linear__lstar_headings__qwen3_0p6b_ft",
+   "family": "fusion",
+   "blocks": [
+    "B"
+   ],
+   "inputs": "L* with headings + qwen3_0p6b_ft",
+   "training_data": "none (label-free)",
+   "grid": "w {0,.1,...,1} (inner folds)",
+   "hardware": "cpu",
+   "adapter": "fusion",
+   "adapter_args": {
+    "method": "linear",
+    "members": [
+     "lstar_headings",
+     "qwen3_0p6b_ft"
+    ]
+   },
+   "mode": "new",
+   "artefact": null,
+   "peak_ram_gb": 14,
+   "threads": 4,
+   "status": "ready",
+   "notes": ""
+  }
+ ]
+}

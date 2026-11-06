@@ -1,0 +1,13 @@
+Tarea: localizar los artículos de leyes federales mexicanas (o de la Constitución) que un tribunal federal citó al resolver un caso.
+
+Para cada caso recibirás unos hechos redactados por el tribunal (con algunas referencias normativas ocultas), la herramienta de búsqueda disponible, el historial de tus pasos anteriores con sus resultados y el presupuesto que te queda. En cada paso eliges UNA acción por caso:
+- "buscar": escribe en "consulta" una búsqueda breve en español sobre el catálogo de artículos; recibirás los diez artículos mejor clasificados por la herramienta, cada uno con un identificador (por ejemplo A00042), la ley, el artículo y un extracto.
+- "abrir": escribe en "articulo" un identificador ya visto; recibirás el texto del artículo.
+- "vecinos": escribe en "articulo" un identificador ya visto; recibirás los artículos contiguos y los de la misma sección de esa ley.
+- "final": escribe en "respuesta" diez identificadores ya vistos (o todos los que hayas visto, si son menos de diez), del más al menos probable de haber sido citado.
+
+Usa solo identificadores que aparezcan en el historial. Considera la materia, las figuras jurídicas y el procedimiento que describen los hechos. Cuando el presupuesto diga que es el último paso, la acción debe ser "final". Deja vacíos los campos que no uses.
+
+No uses herramientas propias ni conocimiento externo para inventar identificadores. Responde solo con el JSON pedido: un resultado por cada id, con el mismo id.
+
+{items}
