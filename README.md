@@ -13,13 +13,13 @@ cited come first. Evaluation uses facts that name no provision and are supplied 
 |---|---|---:|---:|
 | `noenc` | a learned ranker over five lexical and citation sources, no encoder, no language model | 0.432 | 0.468 |
 | `ranker` | the same ranker with three sources built on Qwen3-Embedding-8B vectors | 0.489 | 0.527 |
-| `system` | the ranker's list merged with GPT-6.1 Sol's list of 20, then the first 30 reordered by GPT-6.1 Sol | **0.661** | **0.684** |
+| `system` | the ranker's list merged with GPT-6.1 Sol's list of 20, then the first 30 ordered by GPT-6.1 Sol in one request | **0.659** | **0.691** |
 
 Development scores are out of fold on the 1,217 development evaluation cases; test scores are from one run of the
 final system on the 398 test evaluation cases, with the models trained on every development case. Both are averaged
-within each group of related cases and then across groups. GPT-6.1 Sol's list of 20 on its own scores 0.628 and 0.660.
+within each group of related cases and then across groups. GPT-6.1 Sol's list of 20 on its own scores 0.628 and 0.656; tuned lexical matching scores 0.196 and 0.224.
 The thesis's test set adds 46 cases published after the dataset's snapshot to its 352 test evaluation cases; on those
-352 alone the three setups score 0.463, 0.522 and 0.683.
+352 alone the three setups score 0.463, 0.522 and 0.693.
 
 **How a case is answered.** The first stage scores every article with each source: BM25 over Spanish stems fused with
 character n-grams, BM25 over articles expanded with the facts of training cases that cite them, the articles cited by
@@ -30,7 +30,7 @@ and three from the votes of the older *tesis* most similar to the case (84,459 *
 2020), and a LightGBM LambdaMART model orders the pool. The `system` setup asks GPT-6.1 Sol for 20 articles from the
 facts alone, merges that list with the ranker's by reciprocal rank fusion, has the model order the first 30 in one
 request, and fuses that order with the merged one. `--windows` runs the earlier two-window final step (positions
-11-30, then 1-10 with the best ten below), which produced the thesis's benchmark and test scores.
+11-30, then 1-10 with the best ten below); the two forms score within 0.02 of each other on development and test.
 
 ## Install
 
