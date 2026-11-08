@@ -32,6 +32,7 @@ class Benchmark:
     root: Path
     corrected: bool = True        # labels with the three published corrections (the thesis's evaluation labels)
     _cache: dict = field(default_factory=dict, repr=False)
+    include_test_labels: bool = True
 
     # --------------------------------------------------------------------------------------------------- catalogue
     @cached_property
@@ -125,7 +126,9 @@ class Benchmark:
         corrected = self.corrected if corrected is None else corrected
         key = ("positives", corrected)
         if key not in self._cache:
-            files = [self.root / "labels" / ("dev_corrected.jsonl" if corrected else "dev.jsonl"), self.root / "labels" / "test.jsonl"]
+            files = [self.root / "labels" / ("dev_corrected.jsonl" if corrected else "dev.jsonl")]
+            if self.include_test_labels:
+                files.append(self.root / "labels" / "test.jsonl")
             self._cache[key] = {self.row_of[r["query_id"]]: sorted({self.article_index[p["candidate_id"]] for p in r["positives"]})
                                 for f in files if f.exists() for r in _jsonl(f)}
         return self._cache[key]
@@ -136,5 +139,6 @@ class Benchmark:
         return {r: [a for a in p if a not in g] for r, p in self.positives(corrected).items()}
 
 
-def load(root: str | os.PathLike | None = None, corrected: bool = True) -> Benchmark:
-    return Benchmark(data_root(root), corrected)
+def load(root: str | os.PathLike | None = None, corrected: bool = True, *, include_test_labels: bool = True) -> Benchmark:
+    """Load lazily; development-only consumers can exclude test labels entirely."""
+    return Benchmark(data_root(root), corrected, include_test_labels=include_test_labels)

@@ -48,10 +48,10 @@ class Scripted:
         return {"results": [{"id": "w", "orden": list(range(n, 0, -1))}]}
 
 
-def test_rerank_orders_two_windows_from_the_bottom_up(monkeypatch):
+def test_rerank_windows_orders_two_windows_from_the_bottom_up(monkeypatch):
     monkeypatch.setattr(llm.Catalogue, "line", lambda self, bench, i: f"article {i}")
     merged = list(range(40))
-    out = llm.rerank(Scripted(), BENCH, llm.Catalogue(BENCH), "hechos", merged)
+    out = llm.rerank_windows(Scripted(), BENCH, llm.Catalogue(BENCH), "hechos", merged)
     lower = list(range(29, 9, -1))                           # positions 11-30 reversed
     upper = (list(range(10)) + lower[:10])[::-1]             # positions 1-10 with the best ten below, reversed
     reordered = upper + lower[10:]
@@ -61,3 +61,31 @@ def test_rerank_orders_two_windows_from_the_bottom_up(monkeypatch):
 
 def test_fuse_with_no_model_order_keeps_the_merged_order():
     assert llm.fuse([3, 1, 2], []) == [3, 1, 2]
+
+
+def test_rerank_orders_all_thirty_in_one_request(monkeypatch):
+    monkeypatch.setattr(llm.Catalogue, "line", lambda self, bench, i: f"article {i}")
+    merged = list(range(40))
+    out = llm.rerank(Scripted(), BENCH, llm.Catalogue(BENCH), "hechos", merged)
+    assert out[30:] == merged[30:]
+    assert out[:30] == llm.fuse(merged[:30], merged[:30][::-1])
+
+
+class Incomplete:
+    """Leaves one candidate out on the first attempt and answers in full on the second."""
+
+    def __init__(self):
+        self.calls = 0
+
+    def ask(self, prompt, schema, sample=0):
+        self.calls += 1
+        n = sum(line.split(".")[0].isdigit() for line in prompt.split("Candidatos:\n")[1].splitlines())
+        order = list(range(n, 0, -1))
+        return {"results": [{"id": "w", "orden": order[:-1] if sample == 0 else order}]}
+
+
+def test_rerank_rejects_an_incomplete_order_and_asks_again(monkeypatch):
+    monkeypatch.setattr(llm.Catalogue, "line", lambda self, bench, i: f"article {i}")
+    model = Incomplete()
+    out = llm.rerank(model, BENCH, llm.Catalogue(BENCH), "hechos", list(range(40)))
+    assert model.calls == 2 and out[:30] == llm.fuse(list(range(30)), list(range(29, -1, -1)))

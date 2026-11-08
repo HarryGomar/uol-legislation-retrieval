@@ -2,9 +2,9 @@
 
 Code of the thesis *Retrieval of Mexican Federal Legislation with Language Models and Learning to Rank* (ITAM, 2026).
 
-Given the facts of a published Mexican court decision (*tesis*), with every name of a law or article masked, the task
+Given court-written facts from a published Mexican legal criterion (*tesis*), the task
 is to rank the 39,178 articles of the 264 federal laws in force on 15 September 2024 so that the articles the court
-cited come first. The benchmark is published separately as the [`uol-legislation-retrieval`](https://huggingface.co/datasets/HarryGmr/uol-legislation-retrieval) dataset on Hugging Face (see
+cited come first. Evaluation uses facts that name no provision and are supplied without masking; masked cases remain training-only. The benchmark is published separately as the [`uol-legislation-retrieval`](https://huggingface.co/datasets/HarryGmr/uol-legislation-retrieval) dataset on Hugging Face (see
 [Data](#data)).
 
 ## The three setups
@@ -28,8 +28,9 @@ to each article, the votes of similar cases and the prototypes, all with Qwen3-E
 source's 200 best articles is the pool. Each pooled article gets three columns per source, three describing the pair
 and three from the votes of the older *tesis* most similar to the case (84,459 *tesis* published before 14 August
 2020), and a LightGBM LambdaMART model orders the pool. The `system` setup asks GPT-6.1 Sol for 20 articles from the
-facts alone, merges that list with the ranker's by reciprocal rank fusion, has the model reorder the first 30 in two
-windows of 20, and fuses that order with the merged one.
+facts alone, merges that list with the ranker's by reciprocal rank fusion, has the model order the first 30 in one
+request, and fuses that order with the merged one. `--windows` runs the earlier two-window final step (positions
+11-30, then 1-10 with the best ten below), which produced the thesis's benchmark and test scores.
 
 ## Install
 

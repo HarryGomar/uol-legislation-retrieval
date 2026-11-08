@@ -32,8 +32,8 @@ class Run:
     """``setup``: noenc, ranker or system. ``encoder``: stored (the benchmark's vectors), cuda or cpu."""
 
     def __init__(self, bench: Benchmark, setup: str, group: int, models: str | Path, vectors: str | Path | None,
-                 encoder: str = "stored", model: llm.Model | None = None) -> None:
-        self.bench, self.setup = bench, setup
+                 encoder: str = "stored", model: llm.Model | None = None, windows: bool = False) -> None:
+        self.bench, self.setup, self.windows = bench, setup, windows
         ranker_setup = "noenc" if setup == "noenc" else "ranker"
         self.vectors = Vectors.load(vectors) if ranker_setup == "ranker" else None
         self.ranker = Ranker(bench, ranker_setup, group, load_model(models, ranker_setup, group), self.vectors)
@@ -62,7 +62,7 @@ class Run:
         out = {"query_id": self.bench.cases[row]["query_id"], "ranked": ranked,
                "seconds": {"encode": round(t1 - t0, 3), "rank": round(t2 - t1, 3)}}
         if self.setup == "system":
-            a = llm.full_system(self.model, self.bench, self.catalogue, facts, ranked)
+            a = llm.full_system(self.model, self.bench, self.catalogue, facts, ranked, self.windows)
             out |= {"model_list": a.model_list, "merged": a.merged, "final": a.final}
             out["seconds"]["model"] = round(time.perf_counter() - t2, 3)
         return out

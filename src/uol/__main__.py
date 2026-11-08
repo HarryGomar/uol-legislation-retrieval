@@ -61,7 +61,7 @@ def answer(a: argparse.Namespace) -> None:
     if a.group < N_FOLDS:
         rows = rows[bench.fold[rows] == a.group]
     rows = rows[: a.cases] if a.cases else rows
-    r = run.Run(bench, a.setup, a.group, a.models, a.vectors or bench.root / "vectors", a.encoder, model)
+    r = run.Run(bench, a.setup, a.group, a.models, a.vectors or bench.root / "vectors", a.encoder, model, a.windows)
     out = r.answer_all(rows, a.out or Path(a.work) / a.setup / f"{a.population}_group{a.group}.jsonl")
     if model is not None:
         print(f"model cost so far in this run: {model.cost()} USD")
@@ -97,6 +97,7 @@ def main(argv: list[str] | None = None) -> None:
     p.add_argument("--encoder", choices=["stored", "cuda", "cpu"], default="stored")
     p.add_argument("--route", choices=["openai", "codex"], default="openai")
     p.add_argument("--cases", type=int, default=0, help="first n cases only")
+    p.add_argument("--windows", action="store_true", help="the earlier two-window final step behind the thesis's test scores")
     p.add_argument("--out", default=None)
     p.set_defaults(func=answer)
     for name, func in (("score", score), ("compare", compare)):

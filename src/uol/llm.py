@@ -2,9 +2,12 @@
 
     1. GPT-6.1 Sol reads the facts alone and names 20 articles, most likely first (``prompts/list20.txt``).
     2. Its answers are matched to catalogue articles and merged with the ranker's list by reciprocal rank fusion.
-    3. GPT-6.1 Sol reorders the first 30 of the merged list (``prompts/rerank20.txt``), in two windows of 20 from the
-       bottom up: positions 11-30, then positions 1-10 with the best ten of the first window. Its order is fused with
-       the merged order, and positions after 30 stay as merged.
+    3. GPT-6.1 Sol orders all 30 leading articles of the merged list in one request (``prompts/rerank30.txt``); an
+       answer that is not a complete permutation is rejected and asked again, at most three attempts in all. Its order
+       is fused with the merged order (weight 3), and positions after 30 stay as merged. This single ordering is the
+       final system of the thesis. ``rerank_windows`` keeps the earlier two-window form (positions 11-30, then 1-10
+       with the best ten of the first window, ``prompts/rerank20.txt``), which produced the thesis's benchmark and
+       test scores.
 
 The model is reached through the OpenAI Responses API or the Codex command line (the route used in the thesis). Each
 answer is stored in a JSON-lines cache keyed by model, effort, schema, prompt and sample, so a rerun replays it.
@@ -294,8 +297,33 @@ def fuse(shown: list[int], reordered: list[int], w: float = FUSE_WEIGHT) -> list
     return [shown[i] for i in np.argsort(-(zscore(base) + w * zscore(model)), kind="stable")]
 
 
+RERANK_ATTEMPTS = 3
+
+
+def order_all(model: Model, bench: Benchmark, catalogue: Catalogue, facts: str, shown: list[int]) -> list[int] | None:
+    """The model's complete order of all shown candidates, or None if no attempt returns a full permutation."""
+    lines = "\n".join(f"{n}. {catalogue.line(bench, c)}" for n, c in enumerate(shown, 1))
+    item = f"[id=w]\nHechos: {collapse(facts)}\nCandidatos:\n{lines}"
+    prompt = (PROMPTS / "rerank30.txt").read_text(encoding="utf-8").replace("{items}", item)
+    for sample in range(RERANK_ATTEMPTS):
+        results = {r.get("id"): r for r in ((model.ask(prompt, ORDER_SCHEMA, sample) or {}).get("results", []))}
+        order = results.get("w", {}).get("orden", [])
+        if len(order) == len(shown) and sorted(n for n in order if isinstance(n, int)) == list(range(1, len(shown) + 1)):
+            return [shown[n - 1] for n in order]
+    return None
+
+
 def rerank(model: Model, bench: Benchmark, catalogue: Catalogue, facts: str, merged: list[int]) -> list[int]:
-    """Step 3: windows of 20 from the bottom up (11-30, then 1-10 with the best ten below), fused with the merged order."""
+    """Step 3 of the final system: one ordering of the first 30, fused with the merged order. No order is inferred for
+    a case whose answers are all invalid; it keeps the merged order."""
+    top = merged[:RERANK_DEPTH]
+    order = order_all(model, bench, catalogue, facts, top)
+    return (fuse(top, order) if order else top) + merged[RERANK_DEPTH:]
+
+
+def rerank_windows(model: Model, bench: Benchmark, catalogue: Catalogue, facts: str, merged: list[int]) -> list[int]:
+    """The earlier step 3 behind the thesis's benchmark and test scores: windows of 20 from the bottom up (11-30, then
+    1-10 with the best ten below), fused with the merged order."""
     top = merged[:RERANK_DEPTH]
     lower = order_window(model, bench, catalogue, facts, top[10:30])
     upper = order_window(model, bench, catalogue, facts, top[:10] + lower[:10])
@@ -310,7 +338,9 @@ class SystemAnswer:
     final: list[int]
 
 
-def full_system(model: Model, bench: Benchmark, catalogue: Catalogue, facts: str, ranked: list[int]) -> SystemAnswer:
+def full_system(model: Model, bench: Benchmark, catalogue: Catalogue, facts: str, ranked: list[int],
+                windows: bool = False) -> SystemAnswer:
     listed = model_list(model, catalogue, facts, set(bench.generic.tolist()))
     merged = rrf([listed, ranked])
-    return SystemAnswer(ranked, listed, merged, rerank(model, bench, catalogue, facts, merged))
+    step = rerank_windows if windows else rerank
+    return SystemAnswer(ranked, listed, merged, step(model, bench, catalogue, facts, merged))

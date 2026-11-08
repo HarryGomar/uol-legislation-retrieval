@@ -15,7 +15,7 @@ needs = pytest.mark.skipif(not os.environ.get("UOL_DATA") or not (MODELS / "noen
 @needs
 def test_noenc_fold0_matches_the_stored_lists():
     from uol import data, run
-    bench = data.load()
+    bench = data.load(include_test_labels=False)
     stored = pd.read_parquet(ROOT / "experiments" / "results" / "dev_lists" / "ranker_noenc.parquet")
     rows = [int(r) for r in bench.evaluation_rows() if bench.fold[r] == 0][:10]
     ranker = run.Run(bench, "noenc", 0, MODELS, None).ranker
